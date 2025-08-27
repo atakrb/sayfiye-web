@@ -342,9 +342,9 @@
 .homeecommercecard img,
 .cocktail-photo,
 .cocktail-photo img {
-  border: none !important;
-  outline: none !important;
-  box-shadow: none !important;
+  border: transparent !important;
+  outline: transparent !important;
+  box-shadow: transparent !important;
 }
 
 /* Bazı temalarda wrapper’a kenarlık veriliyor: sıfırla */
@@ -381,8 +381,31 @@
 @media (max-width: 767.98px){
   .sayfiye-vids .vlabel{ padding: 14px 16px; }
 }
+.menuclosebutton {
+    grid-column-gap: 10px;
+    background-color: #000000;}
+    
+    /* Menü madde ikonu siyah olsun (SVG <img> rengi filtreyle siyaha çekilir) */
+.menulinkwrap .menubulletpointwrap img{
+  filter: brightness(0) saturate(100%) !important; /* full siyah */
+  -webkit-filter: brightness(0) saturate(100%) !important;
+}
+
+/* Menüde /about linkinin metnini 'Hakkımızda' biçimine getir */
+.menulinkwrap[href="/about"] .menulinktext{
+  text-transform: lowercase !important;   /* 'HAKKIMIZDA' → 'hakkımızda'  (lang="tr" sayesinde doğru 'ı') */
+}
+.menulinkwrap[href="/about"] .menulinktext::first-letter{
+  text-transform: uppercase !important;   /* ilk harf büyük */
+}
+/* Menü madde ikonu: kırmızı → siyah */
+.menulinkwrap .menubulletpointwrap img{
+  filter: brightness(0) saturate(100%) !important;
+  -webkit-filter: brightness(0) saturate(100%) !important;
+}
 
     </style>
+    
   </head>
   <body>
     <div class="container" style="padding-left: 120px; padding-right: 120px">
@@ -418,11 +441,7 @@
                   </div>
                   <div class="menucontentcenter">
                     <div class="menulinks">
-                      <a
-                        href="/"
-                        aria-current="page"
-                        class="menulinkwrap w-inline-block w--current"
-                      >
+                                            <a href="/about" class="menulinkwrap w-inline-block">
                         <div class="menubulletpointwrap">
                           <img
                             src="https://cdn.prod.website-files.com/68024fb4948470fd4d3f55f3/681f21a908debf71a70b4aee_IconHero.svg"
@@ -437,22 +456,7 @@
                           <div class="menushade"></div>
                         </div>
                       </a>
-                      <a href="/about" class="menulinkwrap w-inline-block">
-                        <div class="menubulletpointwrap">
-                          <img
-                            src="https://cdn.prod.website-files.com/68024fb4948470fd4d3f55f3/681f21a908debf71a70b4aee_IconHero.svg"
-                            loading="lazy"
-                            alt
-                          />
-                        </div>
-                        <div class="menulink">
-                          <div class="menulinktext">HAKKIMIZDA</div>
-                        </div>
-                        <div class="menushadewrap">
-                          <div class="menushade"></div>
-                        </div>
-                      </a>
-                      <a href="/menu" class="menulinkwrap w-inline-block">
+                                            <a href="/about" class="menulinkwrap w-inline-block">
                         <div class="menubulletpointwrap">
                           <img
                             src="https://cdn.prod.website-files.com/68024fb4948470fd4d3f55f3/681f21a908debf71a70b4aee_IconHero.svg"
@@ -467,10 +471,7 @@
                           <div class="menushade"></div>
                         </div>
                       </a>
-                      <a
-                        href="/reservation"
-                        class="menulinkwrap w-inline-block"
-                      >
+                                            <a href="/about" class="menulinkwrap w-inline-block">
                         <div class="menubulletpointwrap">
                           <img
                             src="https://cdn.prod.website-files.com/68024fb4948470fd4d3f55f3/681f21a908debf71a70b4aee_IconHero.svg"
@@ -485,7 +486,7 @@
                           <div class="menushade"></div>
                         </div>
                       </a>
-                      <a href="/restaurant" class="menulinkwrap w-inline-block">
+                                            <a href="/about" class="menulinkwrap w-inline-block">
                         <div class="menubulletpointwrap">
                           <img
                             src="https://cdn.prod.website-files.com/68024fb4948470fd4d3f55f3/681f21a908debf71a70b4aee_IconHero.svg"
@@ -494,7 +495,22 @@
                           />
                         </div>
                         <div class="menulink">
-                          <div class="menulinktext">RESTORAN</div>
+                          <div class="menulinktext">REZERVASYON</div>
+                        </div>
+                        <div class="menushadewrap">
+                          <div class="menushade"></div>
+                        </div>
+                      </a>
+                                            <a href="/about" class="menulinkwrap w-inline-block">
+                        <div class="menubulletpointwrap">
+                          <img
+                            src="https://cdn.prod.website-files.com/68024fb4948470fd4d3f55f3/681f21a908debf71a70b4aee_IconHero.svg"
+                            loading="lazy"
+                            alt
+                          />
+                        </div>
+                        <div class="menulink">
+                          <div class="menulinktext">HAKKIMIZDA</div>
                         </div>
                         <div class="menushadewrap">
                           <div class="menushade"></div>
@@ -790,6 +806,7 @@
                     <div class="heroimagecontent">
                       <div class="imagecontentparralax">
                         <img
+                        style=" height: 800px !important;"
                           src="images/bina-cizim.png"
                           loading="lazy"
                           alt
