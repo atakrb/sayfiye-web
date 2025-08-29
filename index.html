@@ -361,6 +361,7 @@
   backdrop-filter: blur(6px);
   border-top: 1px solid var(--sv-line);
   box-sizing: border-box;
+  text-align: center !important;
 }
 
 /* Metni biraz daha okunur yap */
@@ -402,6 +403,184 @@
 .menulinkwrap .menubulletpointwrap img{
   filter: brightness(0) saturate(100%) !important;
   -webkit-filter: brightness(0) saturate(100%) !important;
+}
+/* ===============================
+   🔶 SAYFİYE KOLAJ BÖLÜMÜ
+   (polaroid çerçeve + masonry columns)
+   =============================== */
+:root{
+  --col-line: var(--line);
+  --col-shadow: 0 14px 34px rgba(0,0,0,.18), 0 2px 8px rgba(0,0,0,.08);
+  --col-paper: rgba(247,242,231,.9);
+  --col-glass: rgba(247,242,231,.72);
+}
+.sayfiye-collage{
+  position:relative; padding-block: clamp(2rem, 6vw, 5rem);
+}
+.sayfiye-collage .collage-head{
+  display:flex; align-items:end; justify-content:space-between; gap:1rem; margin-bottom:1.25rem;
+}
+.sayfiye-collage .collage-head .headinglarge{ margin:0; line-height:1; }
+.sayfiye-collage .collage-head .bodylarge{ max-width:66ch; }
+
+/* Masonry kolon düzeni */
+.collage-columns{
+  column-count: 4; column-gap: clamp(.9rem, 2.4vw, 1.25rem);
+}
+@media (max-width:1100px){ .collage-columns{ column-count: 3; } }
+@media (max-width:768px){ .collage-columns{ column-count: 2; } }
+@media (max-width:520px){ .collage-columns{ column-count: 1; } }
+
+/* Polaroid kart */
+.citem{
+  break-inside: avoid; display:block; position:relative; margin:0 0 clamp(.9rem, 2.4vw, 1.25rem);
+  background: var(--col-paper); border: 2px solid rgba(0,0,0,.18);
+  box-shadow: var(--col-shadow); border-radius: 12px; padding: 10px 10px 14px;
+  transform: rotate(var(--rot, 0deg)) translateZ(0);
+  animation: floatY var(--floatT, 7s) ease-in-out infinite alternate;
+  transition: transform .45s cubic-bezier(.2,.8,.2,1), box-shadow .3s ease;
+}
+.citem:hover{ transform: rotate(0deg) translateY(-4px) scale(1.02); box-shadow: 0 16px 40px rgba(0,0,0,.22); }
+
+/* Foto */
+.citem .photo{
+  display:block; width:100%; height:auto; aspect-ratio: var(--ar, 4/5);
+  object-fit: cover; border-radius: 8px; border:1px solid rgba(0,0,0,.18);
+  filter: var(--photo-tone); /* sitedeki görsel tonu ile uyum */
+}
+
+/* Cam etiket */
+.citem .cap{
+  margin-top:.55rem; text-align:center;
+  background: var(--col-glass);
+  -webkit-backdrop-filter: blur(6px); backdrop-filter: blur(6px);
+  border:1px solid var(--col-line); border-radius: 8px;
+  padding:.55rem .8rem;
+  font: 700 .95rem/1 "Open Sans", system-ui, sans-serif;
+  letter-spacing:.12em; text-transform:uppercase; color:#111;
+}
+
+/* Hafif grid/doku overlay’i */
+.citem::before{
+  content:""; position:absolute; inset:6px 6px auto 6px; height:10px; opacity:.15; border-radius:6px;
+  background:
+    repeating-linear-gradient(0deg, rgba(0,0,0,.06) 0 1px, transparent 1px 18px),
+    repeating-linear-gradient(90deg, rgba(0,0,0,.06) 0 1px, transparent 1px 18px);
+  pointer-events:none;
+}
+
+/* Boy oranları (karışık görünüm için) */
+.citem.square { --ar: 1/1; }
+.citem.tall   { --ar: 3/4; }
+.citem.wide   { --ar: 16/10; }
+.citem.pano   { --ar: 16/7; }
+
+/* “Rastgele” gibi duran dönüş ve süre varyasyonları */
+.citem:nth-child(3n){ --rot:-3.5deg; --floatT: 7.6s; }
+.citem:nth-child(4n){ --rot: 2.5deg;  --floatT: 8.2s; }
+.citem:nth-child(5n){ --rot:-1.8deg;  --floatT: 6.8s; }
+.citem:nth-child(6n){ --rot: 4deg;    --floatT: 7.2s; }
+@keyframes floatY{
+  from{ transform: translateY(0) rotate(var(--rot,0deg)); }
+  to  { transform: translateY(-8px) rotate(calc(var(--rot,0deg) * .6)); }
+}
+
+/* Hover’da foto hafif yakınlaşsın */
+.citem:hover .photo{ transform: scale(1.02); transition: transform .45s ease; }
+
+/* Intersection Observer ile görünür animasyon uyumu (sende zaten var) */
+.sayfiye-collage [data-animate]{ opacity:0; transform:translateY(28px); transition:all .9s cubic-bezier(.2,.8,.2,1); }
+.sayfiye-collage [data-animate].visible{ opacity:1; transform:none; }
+/* ===============================
+   ⚡ Max Motion Collage (overlap + random push)
+   =============================== */
+.collage-columns{
+  perspective: 1200px;
+  transform-style: preserve-3d;
+  position: relative;
+  isolation: isolate;           /* z-index düzgün çalışsın */
+}
+
+.citem{
+  /* dinamik değişkenler */
+  --tiltX: 0deg;    --tiltY: 0deg;
+  --lift: 0px;      --scale: 1;
+  --dx: 0px;        --dy: 0px;   /* rastgele itiş */
+  --z: 0;           --glx: 50%;  --gly: 50%;
+  position: relative;
+  z-index: var(--z);
+  will-change: transform, box-shadow, filter;
+  transform-origin: center center;
+
+  /* floatY + yeni transform katmanları birlikte */
+  transition:
+    transform .28s cubic-bezier(.2,.8,.2,1),
+    box-shadow .25s ease,
+    filter .25s ease;
+}
+
+/* ana transform – overlap için ölçek ve rastgele itişi dahil et */
+.citem{
+  transform:
+    translate(var(--dx), var(--dy))
+    translateY(var(--lift))
+    rotate(var(--rot, 0deg))
+    rotateX(var(--tiltX))
+    rotateY(var(--tiltY))
+    scale(var(--scale));
+}
+
+/* foto parallax (kart eğimine ters) */
+.citem .photo{
+  transition: transform .28s cubic-bezier(.2,.8,.2,1), filter .25s ease;
+  transform:
+    translateZ(0)
+    rotateX(calc(var(--tiltX) * -0.35))
+    rotateY(calc(var(--tiltY) * -0.35));
+}
+
+/* parlama (glare) */
+.citem::after{
+  content:"";
+  position:absolute; inset:0; pointer-events:none; border-radius:10px;
+  background:
+    radial-gradient(circle at var(--glx) var(--gly),
+      rgba(255,255,255,.28) 0%,
+      rgba(255,255,255,.12) 22%,
+      rgba(255,255,255,0) 60%);
+  opacity:0; transition: opacity .2s ease;
+}
+.citem.is-active::after{ opacity:.85; }
+
+/* aktif kart komşuların üstüne çıksın + gölge büyüsün */
+.citem.is-active{
+  --z: 20;
+  filter: saturate(1.05) contrast(1.06);
+  box-shadow:
+    0 26px 60px rgba(0,0,0,.28),
+    0 6px 16px rgba(0,0,0,.14);
+}
+
+/* komşuları biraz “fade+geri çekme” */
+.citem.dim{
+  filter: saturate(.85) contrast(.95) opacity(.65);
+  transform: translate(var(--dx), var(--dy)) rotate(var(--rot,0deg)) scale(.98);
+}
+
+/* hafif jitter wiggle (rastgele süre verilecek) */
+@keyframes wiggle {
+  0%   { transform: translate(var(--dx),var(--dy)) rotate(var(--rot,0deg)) translateY(var(--lift)) scale(var(--scale)); }
+  50%  { transform: translate(calc(var(--dx) + 2px), calc(var(--dy) - 2px)) rotate(calc(var(--rot,0deg) + .4deg)) translateY(calc(var(--lift) - 2px)) scale(calc(var(--scale) + .01)); }
+  100% { transform: translate(var(--dx),var(--dy)) rotate(var(--rot,0deg)) translateY(var(--lift)) scale(var(--scale)); }
+}
+.citem.is-wiggle{
+  animation: wiggle var(--wigT, 900ms) ease-in-out infinite;
+}
+
+/* azaltılmış hareket tercihi */
+@media (prefers-reduced-motion: reduce){
+  .citem, .citem .photo{ transition: none !important; animation: none !important; }
+  .citem::after{ display:none; }
 }
 
     </style>
@@ -807,7 +986,7 @@
                       <div class="imagecontentparralax">
                         <img
                         style=" height: 800px !important;"
-                          src="images/bina-cizim.png"
+                          src="images/indir.png"
                           loading="lazy"
                           alt
                           class="imagecontentparralax"
@@ -926,6 +1105,10 @@
               </div>
             </div>
             <div class="paddingglobal"><div class="divider"></div></div>
+            
+
+            
+            
             <!-- HAKKIMIZDA -->
             <div class="section">
               <div class="paddingglobal">
@@ -938,7 +1121,7 @@
                         </div>
                         <div class="spacerxs"></div>
                         <h2 class="headinglarge">
-                          Sayfiye'de<br />Rakı<br />İçmek...
+                          Sayfiye'de<br />Rakı İçmek...
                         </h2>
                       </div>
                       <div class="textmaxwidth textwidthxlarge">
@@ -988,6 +1171,52 @@
               </div>
             </div>
             <div class="paddingglobal"><div class="divider"></div></div>
+
+                        <section class="sayfiye-vids">
+              <div class="paddingglobal">
+                <div class="sayfiye-vids__grid">
+                  <!-- VİDEO 1: MENÜ -->
+                  <a class="vitem" href="/menu" aria-label="Menü" data-animate="left">
+                    <div class="vframe" style="width: 450px; height: 500px; margin-right: 200px;">
+                      <video class="vvideo" autoplay muted loop playsinline preload="metadata"
+                        >
+                        <source src="videos/bardak-2.mp4" type="video/mp4" />
+                      </video>
+                      <div class="vover"></div>
+                      <div class="vlabel"><span>MENÜ</span></div>
+                    </div>
+                  </a>
+
+                  <!-- VİDEO 3: ORTAM -->
+                  <a class="vitem" href="/restaurant" aria-label="Ortam" data-animate="right">
+                    <div class="vframe" style="width: 450px; height: 500px;">
+                      <video class="vvideo" autoplay muted loop playsinline preload="metadata"
+                        poster="images/masa-2.png">
+                        <source src="videos/ortam.mp4" type="video/mp4" />
+                      </video>
+                      <div class="vover"></div>
+                      <div class="vlabel"><span>ORTAM</span></div>
+                    </div>
+                  </a>
+
+
+                  <!-- VİDEO 2: REZERVASYON -->
+                  <a class="vitem" href="/reservation" aria-label="Rezervasyon" data-animate="up">
+                    <div class="vframe" style="width: 450px; height: 500px; ">
+                      <video class="vvideo" autoplay muted loop playsinline preload="metadata"
+                        poster="https://cdn.prod.website-files.com/68024fb4948470fd4d3f55f3/68483edd703f1b2a8930afa3_OldPhone.webp">
+                        <source src="videos/raki-1.mp4" type="video/mp4" />
+                      </video>
+                      <div class="vover"></div>
+                      <div class="vlabel" style="background-color: whitesmoke;"><span>REZERVASYON</span></div>
+                    </div>
+                  </a>
+
+
+                </div>
+              </div>
+            </section>
+<div class="paddingglobal"><div class="divider"></div>
             <!-- FAHRİ BABA BLOĞU -->
             <div class="section">
               <div class="paddingglobal">
@@ -1102,53 +1331,59 @@
 
             <div class="paddingglobal"><div class="divider"></div></div>
 
+
+<!-- 🔶 SAYFİYE KOLAJ (Cocktails ↔ 3'lü Video arası) -->
+<section class="sayfiye-collage" aria-label="Sayfiye Kolajı">
+  <div class="paddingglobal">
+
+
+    <div class="collage-columns">
+      <!-- Görselleri kendi dosyalarınla değiştir. Örn: /images/… -->
+      <figure class="citem tall"   data-animate="up">
+        <img class="photo" src="images/meze.png" alt="Meze tepsisi ve rakı" loading="lazy">
+      </figure>
+
+      <figure class="citem wide"   data-animate="right">
+        <img class="photo" src="images/manzara.png" alt="Deniz manzarası" loading="lazy">
+      </figure>
+
+
+
+      <figure class="citem pano"   data-animate="up">
+        <img class="photo" src="images/masa-2.png" alt="Masa hazırlığı" loading="lazy">
+      </figure>
+
+      <figure class="citem tall"   data-animate="right">
+        <img class="photo" src="images/bar.png" alt="Bar detay" loading="lazy">
+      </figure>
+
+      <figure class="citem wide"   data-animate="left">
+        <img class="photo" src="images/meze-3.png" alt="Rakı kadehleri" loading="lazy">
+      </figure>
+
+      <figure class="citem wide"   data-animate="right">
+        <img class="photo" src="images/ev.png" alt="Ortamdaki sıcak ışık" loading="lazy">
+      </figure>
+
+      <figure class="citem wide"   data-animate="right">
+        <img class="photo" src="images/balik.png" alt="Ortamdaki sıcak ışık" loading="lazy">
+      </figure>
+            <figure class="citem wide"   data-animate="left">
+        <img class="photo" src="images/raki.jpg" alt="Rakı kadehleri" loading="lazy">
+      </figure>
+
+      <figure class="citem tall"   data-animate="left">
+        <img class="photo" src="images/meze-4.png" alt="Tatlı" loading="lazy">
+      </figure>
+    </div>
+  </div>
+</section>
+
+
             <!-- 🔶 3'lü VIDEO VİTRİN (Yeni bölüm) -->
-            <section class="sayfiye-vids">
-              <div class="paddingglobal">
-                <div class="sayfiye-vids__grid">
-                  <!-- VİDEO 1: MENÜ -->
-                  <a class="vitem" href="/menu" aria-label="Menü" data-animate="left">
-                    <div class="vframe" style="width: 450px; height: 500px; margin-right: 200px;">
-                      <video class="vvideo" autoplay muted loop playsinline preload="metadata"
-                        >
-                        <source src="videos/bardak-2.mp4" type="video/mp4" />
-                      </video>
-                      <div class="vover"></div>
-                      <div class="vlabel"><span>MENÜ</span></div>
-                    </div>
-                  </a>
-
-                  <!-- VİDEO 3: ORTAM -->
-                  <a class="vitem" href="/restaurant" aria-label="Ortam" data-animate="right">
-                    <div class="vframe" style="width: 450px; height: 500px;">
-                      <video class="vvideo" autoplay muted loop playsinline preload="metadata"
-                        poster="images/masa-2.png">
-                        <source src="videos/ortam.mp4" type="video/mp4" />
-                      </video>
-                      <div class="vover"></div>
-                      <div class="vlabel"><span>ORTAM</span></div>
-                    </div>
-                  </a>
 
 
-                  <!-- VİDEO 2: REZERVASYON -->
-                  <a class="vitem" href="/reservation" aria-label="Rezervasyon" data-animate="up">
-                    <div class="vframe" style="width: 450px; height: 500px; ">
-                      <video class="vvideo" autoplay muted loop playsinline preload="metadata"
-                        poster="https://cdn.prod.website-files.com/68024fb4948470fd4d3f55f3/68483edd703f1b2a8930afa3_OldPhone.webp">
-                        <source src="videos/raki-1.mp4" type="video/mp4" />
-                      </video>
-                      <div class="vover"></div>
-                      <div class="vlabel" style="background-color: whitesmoke;"><span>REZERVASYON</span></div>
-                    </div>
-                  </a>
 
-
-                </div>
-              </div>
-            </section>
-
-            <div class="paddingglobal"><div class="divider"></div></div>
             <div class="paddingglobal"><div class="divider"></div></div>
 
             <!-- REZERVASYON FORM -->
@@ -1546,6 +1781,121 @@
           });
         }
       });
+      
     </script>
+    <script>
+  document.addEventListener("DOMContentLoaded", function(){
+    const items = Array.from(document.querySelectorAll(".sayfiye-collage .citem"));
+    const isTouch = matchMedia("(hover: none), (pointer: coarse)").matches;
+    if(isTouch){
+      items.forEach((el)=>{
+        el.addEventListener("click", function(ev){
+          if(!el.classList.contains("is-hover")){
+            ev.preventDefault();
+            items.forEach(i=>i.classList.remove("is-hover"));
+            el.classList.add("is-hover");
+            clearTimeout(el._timer);
+            el._timer = setTimeout(()=>el.classList.remove("is-hover"), 1200);
+          }
+        }, {passive:false});
+      });
+    }
+  });
+</script>
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+  const cards = Array.from(document.querySelectorAll(".sayfiye-collage .citem"));
+  const isTouch = matchMedia("(hover: none), (pointer: coarse)").matches;
+
+  // sınırlar
+  const MAX_TILT = 9;          // deg
+  const MAX_LIFT = -16;        // px
+  const MAX_PUSH = 14;         // px (rastgele itiş)
+  const SCALE_MIN = 1.08, SCALE_MAX = 1.16;
+
+  // aktif olduğunda diğerlerini dim'le
+  function dimOthers(active){
+    cards.forEach(c => c === active ? c.classList.add("is-active") : c.classList.add("dim"));
+  }
+  function clearDim(){
+    cards.forEach(c => { c.classList.remove("dim","is-active","is-wiggle"); });
+  }
+
+  cards.forEach(card => {
+    let raf = null;
+    const state = { x: 0, y: 0, hover: false };
+
+    // küçük yardımcılar
+    const rand = (min, max) => Math.random() * (max - min) + min;
+    const randsign = v => (Math.random() < .5 ? -v : v);
+
+    function apply(){
+      raf = null;
+      const nx = state.x, ny = state.y; // -1..1
+      // tilt
+      card.style.setProperty("--tiltX", `${ny * MAX_TILT}deg`);
+      card.style.setProperty("--tiltY", `${-nx * MAX_TILT}deg`);
+      // lift & scale
+      card.style.setProperty("--lift", `${(state.hover ? 1 : 0) * MAX_LIFT}px`);
+      // glare
+      card.style.setProperty("--glx", `${(nx*50 + 50).toFixed(2)}%`);
+      card.style.setProperty("--gly", `${(ny*50 + 50).toFixed(2)}%`);
+    }
+
+    function onMovePoint(clientX, clientY){
+      const rect = card.getBoundingClientRect();
+      const px = (clientX - rect.left) / rect.width;  // 0..1
+      const py = (clientY - rect.top)  / rect.height; // 0..1
+      state.x = (px - 0.5) * 2; // -1..1
+      state.y = (py - 0.5) * 2; // -1..1
+      if(!raf) raf = requestAnimationFrame(apply);
+    }
+
+    function onEnterPoint(clientX, clientY){
+      // rastgele push + scale
+      const dx = randsign(rand(4, MAX_PUSH));
+      const dy = randsign(rand(2, MAX_PUSH));
+      const sc = rand(SCALE_MIN, SCALE_MAX);
+
+      card.style.setProperty("--dx", dx.toFixed(2) + "px");
+      card.style.setProperty("--dy", dy.toFixed(2) + "px");
+      card.style.setProperty("--scale", sc.toFixed(3));
+      card.style.setProperty("--z", "20");
+
+      // rastgele wiggle süresi
+      card.style.setProperty("--wigT", Math.round(rand(700, 1100)) + "ms");
+
+      state.hover = true;
+      card.classList.add("is-wiggle");
+      dimOthers(card);
+      if (clientX != null) onMovePoint(clientX, clientY);
+      if(!raf) raf = requestAnimationFrame(apply);
+    }
+
+    function onLeave(){
+      state.hover = false;
+      card.style.setProperty("--dx", "0px");
+      card.style.setProperty("--dy", "0px");
+      card.style.setProperty("--scale", "1");
+      card.style.setProperty("--z", "0");
+      clearDim();
+      if(!raf) raf = requestAnimationFrame(apply);
+    }
+
+    if(!isTouch){
+      card.addEventListener("pointerenter", (e)=> onEnterPoint(e.clientX, e.clientY));
+      card.addEventListener("pointermove",  (e)=> onMovePoint(e.clientX, e.clientY));
+      card.addEventListener("pointerleave", onLeave);
+    } else {
+      // dokunmatik: ilk dokunuşta büyüt/öne çıkar, ikinci dokunuşta link (uygunsa)
+      let touching = false;
+      card.addEventListener("touchstart", (e)=>{ touching = true; const t=e.touches[0]; onEnterPoint(t.clientX, t.clientY); }, {passive:true});
+      card.addEventListener("touchmove",  (e)=>{ if(!touching) return; const t=e.touches[0]; onMovePoint(t.clientX, t.clientY); }, {passive:true});
+      card.addEventListener("touchend",   ()=>{ touching = false; onLeave(); }, {passive:true});
+    }
+  });
+});
+</script>
+
   </body>
 </html>
