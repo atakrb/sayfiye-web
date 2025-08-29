@@ -1,0 +1,1162 @@
+/* ====== GENEL TİPOGRAFİ & KAĞIT DOKUSU ====== */
+:root {
+  --accent-dark: #3b3b3b;
+  --accent-bg: #ededed;
+  --accent-soft: rgba(0, 0, 0, 0.08);
+  --line: rgba(0, 0, 0, 0.18);
+  --ink: #2f2f2f;
+  --ink-strong: #242424;
+}
+html,
+body {
+  background: #f7f2e7;
+  color: var(--ink);
+  font-family: "Bitter", "Times New Roman", serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  color: var(--ink-strong) !important;
+  font-variant-caps: small-caps;
+  letter-spacing: 0.03em;
+  text-transform: none;
+}
+p,
+.bodylarge,
+.bodyxsmall,
+.bodyhighlight,
+.textinline,
+.textstyleregular,
+.gault-milleau-listed,
+.footertextwrap div,
+.footercontentwrap div,
+.footercontentwrap a,
+.homeeccommercecontent div,
+.headingsmall,
+.headingregular,
+.headinghome,
+.headinglarge,
+.headingstyleh1,
+.headinghomeabout,
+.headingstyleh5,
+.heroheadingtext,
+.menulinktext,
+.titlemeta,
+.reservecontent div {
+  color: var(--ink) !important;
+}
+.backgroundbody,
+.backgroundpattern,
+.paperstructure,
+.papercolor,
+.pageborder {
+  border: var(--ink-strong);
+  filter: contrast(0.98) brightness(1.02);
+  opacity: 0.95;
+}
+.divider,
+.divider1px,
+.dividervertical,
+.dividerfooter {
+  background-color: var(--line) !important;
+  border-color: rgba(61, 61, 61, 0.82) !important;
+}
+.fieldlabel,
+.fieldtext {
+  color: var(--ink) !important;
+  border: #2f2f2f !important;
+}
+.menucontentwrap {
+  border-top: 2px solid #000000;
+  border-bottom: 2px solid #5f5f5f;
+  width: 34vw;
+  max-width: 28rem;
+  height: 100%;
+}
+.footerwrapinner,
+.imagecontentparralax {
+  border: 3px solid #000000;
+}
+
+/* ====== KIRMIZI AKSAN ====== */
+.textcolorred,
+a.textcolorred,
+.homeeccommercecontent .textcolorred {
+  color: var(--accent-dark) !important;
+}
+.titlewrapred {
+  background: var(--accent-bg) !important;
+  color: #111 !important;
+  border: 1px solid var(--line) !important;
+}
+.bgcolorred {
+  background: var(--accent-soft) !important;
+  color: #111 !important;
+  border: 1px solid var(--line) !important;
+}
+[class*="red"] {
+  color: var(--accent-dark) !important;
+  background-color: var(--accent-bg) !important;
+  border-color: var(--line) !important;
+}
+.button .buttontext,
+.button .buttontext em {
+  color: #222 !important;
+}
+
+/* Görsel ton (fotoğraflar) */
+.imagecontent,
+.imagemenu,
+.imagetelephone,
+.homeecommercecard img,
+.homeillustrationoysters,
+.illustrationravioli,
+.illustrationcocktail,
+.imagecontentcontact,
+.iconstamp,
+.iconstampreserve {
+  filter: sepia(0.14) saturate(0.2) contrast(1.54);
+}
+a {
+  color: #383838;
+  text-decoration-color: rgba(0, 0, 0, 0.35);
+  text-underline-offset: 2px;
+}
+::selection {
+  background: #e6ddc9;
+  color: #111;
+}
+.textcolourwhite {
+  color: var(--ink) !important;
+}
+.darkoverlay,
+.noise {
+  opacity: 0.1 !important;
+}
+.logowrap {
+  background-color: var(--body-colour-beige);
+}
+.cardboard,
+.cardboardinner {
+  border: 2px solid #7070707a;
+  width: 100%;
+  height: 100%;
+  padding: 0.5rem;
+  background: #ececec;
+}
+.buttontextwrap {
+  border: 0.5px solid #8181817a;
+}
+.button {
+  border: 2px solid #8181817a !important;
+}
+.menuwrapinner {
+  background-color: #8181817a;
+}
+.heroheadingtext {
+  font-size: 15rem;
+  margin-top: 2rem;
+  text-align: center !important;
+}
+
+/* ==== Webflow Rozeti KALDIR ==== */
+.w-webflow-badge,
+a[title*="Made in Webflow"],
+a[href*="webflow.com"][style*="fixed"] {
+  display: none !important;
+  visibility: hidden !important;
+  pointer-events: none !important;
+}
+
+#w-node-d6e0f7f7-5ee1-dd54-9d6c-d5d43ad740a0-4d3f55d2 {
+  min-height: 0;
+  height: 0;
+  overflow: hidden;
+  padding: 0;
+  margin: 0;
+}
+
+/* === Kokteyl 3'lü galeri === */
+.cocktail-photo-row {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1rem;
+  margin-top: 1.25rem;
+}
+.cocktail-photo {
+  position: relative;
+  aspect-ratio: 4/3;
+  overflow: hidden;
+  border: 2px solid #0000007a;
+  background: #ececec;
+}
+.cocktail-photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: sepia(0.14) saturate(0.8) contrast(1.04);
+}
+@media (max-width: 900px) {
+  .cocktail-photo-row {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+@media (max-width: 600px) {
+  .cocktail-photo-row {
+    grid-template-columns: 1fr;
+  }
+}
+
+[class*="red"] {
+  color: var(--accent-dark) !important;
+  background-color: #f9f8f2 !important;
+  border-color: #f9f8f2 !important;
+}
+
+/* === ANİMASYONLAR === */
+[data-animate] {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: all 1s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+[data-animate].visible {
+  opacity: 1;
+  transform: translateY(0) rotate(0deg);
+}
+[data-animate="fade"].visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+[data-animate="right"] {
+  transform: translateX(60px);
+}
+[data-animate="right"].visible {
+  transform: translateX(0);
+}
+[data-animate="left"] {
+  transform: translateX(-60px);
+}
+[data-animate="left"].visible {
+  transform: translateX(0);
+}
+[data-animate="up"] {
+  transform: translateY(60px);
+}
+[data-animate="up"].visible {
+  transform: translateY(0);
+}
+[data-animate="rotate"] {
+  transform: scale(0.95) rotate(-10deg);
+}
+[data-animate="rotate"].visible {
+  transform: scale(1) rotate(0deg);
+}
+[data-animate="zoom"] {
+  transform: scale(0.8);
+}
+[data-animate="zoom"].visible {
+  transform: scale(1);
+}
+
+/* === ASPAVA BLOĞU === */
+.aspava-feature {
+  display: grid;
+  grid-template-columns: 1fr minmax(36rem, 46rem) 1fr;
+  gap: 3rem;
+  align-items: center;
+}
+.aspava-photo {
+  position: relative;
+}
+.aspava-photo .imagecontentparralax {
+  max-width: 28rem;
+  margin-inline: auto;
+}
+.aspava-grid {
+  position: absolute;
+  left: -1.25rem;
+  bottom: -1.25rem;
+  width: 14rem;
+  height: 10rem;
+  background: repeating-linear-gradient(
+      0deg,
+      var(--line),
+      var(--line) 1px,
+      transparent 1px,
+      transparent 30px
+    ),
+    repeating-linear-gradient(
+      90deg,
+      var(--line),
+      var(--line) 1px,
+      transparent 1px,
+      transparent 30px
+    );
+  opacity: 0.35;
+  pointer-events: none;
+}
+.aspava-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font: 700 0.9rem/1 "Open Sans", system-ui, sans-serif;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: #2a8f82;
+}
+.aspava-badge::before,
+.aspava-badge::after {
+  content: "◆";
+  font-size: 0.8rem;
+  opacity: 0.9;
+}
+.aspava-center .headinglarge {
+  margin: 0.6rem 0 1rem;
+  line-height: 1.05;
+}
+.aspava-center .bodylarge {
+  max-width: 60ch;
+}
+@media (max-width: 1100px) {
+  .aspava-feature {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+  .aspava-photo .imagecontentparralax {
+    max-width: 40rem;
+  }
+  .aspava-grid {
+    display: none;
+  }
+}
+
+/* ========= FULL RESPONSIVE OVERLAY ========= */
+.heroheadingtext {
+  font-size: clamp(3rem, 12vw, 12rem) !important;
+  line-height: 0.9;
+  margin-top: clamp(0.5rem, 2vw, 2rem);
+}
+.headinglarge {
+  font-size: clamp(5rem, 3.5vw, 1rem);
+}
+.headingsmall {
+  font-size: clamp(1.05rem, 1.2vw + 0.6rem, 1.25rem);
+}
+.bodylarge,
+.textinline {
+  font-size: clamp(1rem, 0.6vw + 0.9rem, 1.125rem);
+}
+
+.imagecontentparralax .imagecontent {
+  display: block;
+  width: 100;
+} /* desktop’ta dokunmuyoruz */
+
+@media (max-width: 1024px) {
+  .aspava-photo .imagecontent {
+    height: auto !important;
+    width: 100% !important;
+  }
+  .aspava-photo .imagecontentparralax {
+    max-width: 100%;
+  }
+}
+
+.homeaboutgrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: min(3vw, 2rem);
+  align-items: center;
+}
+@media (max-width: 1024px) {
+  .homeaboutgrid {
+    grid-template-columns: 1fr;
+  }
+}
+.homemenuwrap {
+  display: grid;
+  grid-template-columns: 1fr minmax(0, 2px) 1fr;
+  gap: min(3vw, 2rem);
+  align-items: start;
+}
+@media (max-width: 992px) {
+  .homemenuwrap {
+    grid-template-columns: 1fr;
+  }
+  .dividervertical {
+    display: none !important;
+  }
+}
+
+@media (max-width: 992px) {
+  .menucontentwrap {
+    width: 92vw;
+    max-width: 34rem;
+  }
+}
+.formgrid {
+  display: grid;
+  grid-template-columns: 1.2fr 1fr;
+  gap: min(3vw, 2rem);
+  align-items: start;
+}
+@media (max-width: 992px) {
+  .formgrid {
+    grid-template-columns: 1fr;
+  }
+}
+.reserveformcontent .text-field {
+  width: 100%;
+  box-sizing: border-box;
+}
+
+@media (max-width: 768px) {
+  .booknowgrid iframe {
+    border-radius: 0.5rem;
+  }
+}
+.aspava-center {
+  text-align: left;
+}
+@media (max-width: 768px) {
+  .aspava-center {
+    text-align: left;
+  }
+}
+
+html,
+body {
+  background: transparent !important;
+}
+
+/* =====📱 Tablet & Telefon Responsive Yaması ===== */
+@media (max-width: 1199.98px) {
+  .container {
+    padding-left: 40px !important;
+    padding-right: 40px !important;
+  }
+  .main {
+    transform: none !important;
+    -webkit-transform: none !important;
+    opacity: 1 !important;
+  }
+  .heroheadingtext {
+    font-size: clamp(3rem, 10vw, 7rem) !important;
+    line-height: 0.95 !important;
+    word-break: break-word;
+  }
+  .headinglarge {
+    font-size: clamp(4rem, 2.2vw + 1rem, 3.5rem) !important;
+    line-height: 1.15 !important;
+  }
+  .headingsmall {
+    line-height: 1.2 !important;
+  }
+  .imagecontent,
+  .imagemenu,
+  .imagetelephone,
+  .imagecontentcontact {
+    max-width: 100% !important;
+    width: 100% !important;
+    height: auto !important;
+  }
+  .imagecontentparralax {
+    max-width: 100% !important;
+  }
+  .imagecontentparralax .imagecontent {
+    width: 100% !important;
+  }
+  .homeaboutgrid,
+  .homemenuwrap {
+    grid-template-columns: 1fr !important;
+  }
+  .dividervertical {
+    display: none !important;
+  }
+  .reservewrap {
+    text-align: center;
+  }
+  .reservewrap .imagetelephone {
+    width: 60% !important;
+    max-width: 260px !important;
+    margin: 0 auto;
+    display: block;
+  }
+  .menucontentwrap {
+    width: 92vw !important;
+    max-width: 20rem !important;
+  }
+  .footercontentgrid {
+    display: grid !important;
+    grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+    gap: 1.25rem !important;
+  }
+  .aspava-feature {
+    grid-template-columns: 1fr !important;
+    gap: 1.75rem !important;
+  }
+  .aspava-photo [style*="height:"] {
+    height: auto !important;
+  }
+}
+
+@media (max-width: 767.98px) {
+  .container {
+    padding-left: 16px !important;
+    padding-right: 16px !important;
+  }
+  .heroheadingtext {
+    font-size: clamp(2.25rem, 12vw, 4.25rem) !important;
+    line-height: 0.95 !important;
+    letter-spacing: 0 !important;
+  }
+  .headinglarge {
+    font-size: clamp(3rem, 3.5vw + 0.8rem, 2.25rem) !important;
+  }
+  .headingsmall {
+    font-size: clamp(0.6rem, 2.8vw + 0.5rem, 1.125rem) !important;
+  }
+  .bodylarge,
+  .textinline,
+  p {
+    font-size: clamp(0.6rem, 1.8vw + 0.75rem, 1.05rem) !important;
+    line-height: 1.6 !important;
+  }
+  .navitems {
+    gap: 0.5rem !important;
+  }
+  .navreserve {
+    order: 2;
+  }
+  .reserveformcontent .text-field {
+    font-size: 16px !important;
+  }
+  .footercontentgrid {
+    grid-template-columns: 1fr 1fr !important;
+    gap: 1rem !important;
+  }
+  .footercontentwrap .footertitle {
+    margin-bottom: 0.5rem !important;
+  }
+  .heroimagewrap,
+  .heroimagecontent {
+    max-height: none !important;
+  }
+  .homemenuwrapleft,
+  .homemenuwrapright {
+    margin-inline: 0 !important;
+  }
+  .reservecontent .bodylarge {
+    margin-bottom: 0.25rem !important;
+  }
+}
+
+@media (max-width: 360px) {
+  .heroheadingtext {
+    letter-spacing: -0.5px !important;
+  }
+  .headinglarge {
+    font-size: 1.45rem !important;
+  }
+}
+
+.menucontentinner {
+  padding-right: 120px;
+}
+
+/* ===============================
+         🔶 3'lü VIDEO VİTRİN (Uyarlanmış)
+         =============================== */
+:root {
+  --sv-line: var(--line);
+  --sv-glass: rgba(247, 242, 231, 0.62);
+  --sv-shadow: 0 14px 34px rgba(0, 0, 0, 0.18), 0 2px 8px rgba(0, 0, 0, 0.08);
+}
+.sayfiye-vids {
+  padding-block: clamp(2rem, 6vw, 5rem);
+  position: relative;
+}
+.sayfiye-vids__grid {
+  display: grid;
+  gap: clamp(1rem, 2.6vw, 2rem);
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+@media (max-width: 1024px) {
+  .sayfiye-vids__grid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+@media (max-width: 640px) {
+  .sayfiye-vids__grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.vitem {
+  display: block;
+  border-radius: 16px;
+  overflow: clip;
+}
+.vitem:focus-visible {
+  outline: 2px dashed #666;
+  outline-offset: 4px;
+}
+
+.vframe {
+  position: relative;
+  aspect-ratio: 16/9;
+  background: #e9e9e9;
+  border: 2px solid #7070707a;
+  box-shadow: var(--sv-shadow);
+  transform: translateZ(0);
+}
+.vvideo {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0.92;
+  filter: sepia(0.12) saturate(0.85) contrast(1.06);
+  transition: transform 0.9s cubic-bezier(0.2, 0.8, 0.2, 1), filter 0.6s ease,
+    opacity 0.6s ease;
+  transform: scale(1.02);
+}
+.vover {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+      to top,
+      rgba(0, 0, 0, 0.28),
+      rgba(0, 0, 0, 0.08) 40%,
+      rgba(0, 0, 0, 0.02) 70%,
+      transparent
+    ),
+    repeating-linear-gradient(
+      0deg,
+      rgba(0, 0, 0, 0.04) 0 1px,
+      transparent 1px 32px
+    ),
+    repeating-linear-gradient(
+      90deg,
+      rgba(0, 0, 0, 0.04) 0 1px,
+      transparent 1px 32px
+    );
+  opacity: 0.55;
+  transition: opacity 0.4s ease;
+  mix-blend-mode: multiply;
+  pointer-events: none;
+}
+.vlabel {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  transform: translateY(100%);
+  background: var(--sv-glass);
+  -webkit-backdrop-filter: blur(6px);
+  backdrop-filter: blur(6px);
+  border-top: 1px solid var(--sv-line);
+  padding: 0.85rem 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.45s cubic-bezier(0.2, 0.8, 0.2, 1),
+    background 0.3s ease;
+}
+.vlabel span {
+  font: 700 clamp(1rem, 0.8vw + 0.9rem, 1.3rem) / 1 "Open Sans", system-ui,
+    sans-serif;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: #111;
+}
+.vitem:hover .vvideo,
+.vitem.is-hover .vvideo {
+  transform: scale(1.08);
+  filter: sepia(0.08) saturate(0.95) contrast(1.08);
+}
+.vitem:hover .vover,
+.vitem.is-hover .vover {
+  opacity: 0.35;
+}
+.vitem:hover .vlabel,
+.vitem:focus .vlabel,
+.vitem.is-hover .vlabel {
+  transform: translateY(0);
+}
+
+.vlabel {
+  background-color: whitesmoke;
+  text-align: center;
+  padding: 30px;
+  margin-right: 10px;
+  margin-left: 10px;
+}
+
+/* 🎞️ Videolara, fotoğraflarla aynı efekt */
+:root {
+  --photo-tone: sepia(0.14) saturate(0.2) contrast(1.54);
+}
+.sayfiye-vids .vvideo {
+  filter: var(--photo-tone) !important;
+  opacity: 0.92;
+  transform: scale(1.02);
+}
+.sayfiye-vids .vitem:hover .vvideo,
+.sayfiye-vids .vitem.is-hover .vvideo {
+  filter: var(--photo-tone) brightness(1.03) !important;
+  transform: scale(1.08);
+}
+
+@media screen and (max-width: 479px) {
+  body {
+    --font-family--heading-font-family: "Playfairdisplay Variablefont Wght",
+      Arial, sans-serif;
+    --red100: transparent;
+  }
+}
+
+/* ===============================
+         ✅ Ek Responsive Güvence BLOĞU
+         (yalnızca tablet/telefon; desktop’a dokunmaz)
+         =============================== */
+
+/* iPad Pro yatay da dahil */
+@media (max-width: 1366px) {
+  html,
+  body {
+    overflow-x: hidden;
+  }
+
+  /* Menü paneli iç dolgusu mobilde taşma yapmasın */
+  .menucontentinner {
+    padding-right: 24px !important;
+  }
+
+  /* Görsel elemanlar: taşma/bozulma engeli */
+  .imagecontent,
+  .imagemenu,
+  .imagetelephone,
+  .imagecontentcontact,
+  .imagecontentparralax .imagecontent {
+    max-width: 100% !important;
+    width: 100% !important;
+    height: auto !important;
+  }
+
+  /* Video vitrin: inline width/height/margin’leri etkisizleştir */
+  .sayfiye-vids .vframe {
+    width: 100% !important;
+    height: auto !important;
+    margin: 0 !important;
+    aspect-ratio: 4/5; /* dikeyde daha güvenli görünüm */
+  }
+  .sayfiye-vids .vvideo {
+    width: 100% !important;
+    height: 100% !important;
+    object-fit: cover;
+  }
+  .sayfiye-vids__grid {
+    gap: clamp(0.75rem, 2.2vw, 1.25rem);
+  }
+}
+
+/* Telefon */
+@media (max-width: 767.98px) {
+  .sayfiye-vids__grid {
+    grid-template-columns: 1fr !important;
+  }
+  .sayfiye-vids .vframe {
+    aspect-ratio: 16/9;
+  } /* telefonda klasik oran */
+  .vlabel {
+    margin-left: 8px;
+    margin-right: 8px;
+    padding: 18px;
+  }
+}
+/* === 1) TÜM GÖRSEL (IMAGE) BORDER’LARINI KALDIR === */
+.imagecontentparralax,
+.imagecontent,
+.imagemenu,
+.imagetelephone,
+.imagecontentcontact,
+.homeecommercecard img,
+.cocktail-photo,
+.cocktail-photo img {
+  border: transparent !important;
+  outline: transparent !important;
+  box-shadow: transparent !important;
+}
+
+/* Bazı temalarda wrapper’a kenarlık veriliyor: sıfırla */
+.imagecontentparralax {
+  border: none !important;
+}
+
+/* === 2) VIDEO ÜSTÜ ETİKET (BUTON) HİZASI + RENK === */
+/* Kenar boşluklarını kaldır, tam alta oturt, beyaz yerine “kağıt camı” tonu ver */
+.sayfiye-vids .vlabel {
+  left: 0;
+  right: 0;
+  bottom: 0;
+  margin: -5px !important; /* önceki 10px marjinleri iptal */
+  padding: 16px 20px; /* daha dengeli iç boşluk */
+  background: rgba(
+    247,
+    242,
+    231,
+    0.82
+  ) !important; /* bembeyaz değil, sıcak cam efekti */
+  -webkit-backdrop-filter: blur(6px);
+  backdrop-filter: blur(6px);
+  border-top: 1px solid var(--sv-line);
+  box-sizing: border-box;
+  text-align: center !important;
+}
+
+/* Metni biraz daha okunur yap */
+.sayfiye-vids .vlabel span {
+  color: #161616;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+/* Hover/dokunmatik “etiket açılma” davranışı aynı, ama hizası kusursuz */
+.sayfiye-vids .vitem:hover .vlabel,
+.sayfiye-vids .vitem:focus .vlabel,
+.sayfiye-vids .vitem.is-hover .vlabel {
+  transform: translateY(0);
+}
+
+/* Küçük ekranlarda da kenarsız ve taşmasız kalsın */
+@media (max-width: 767.98px) {
+  .sayfiye-vids .vlabel {
+    padding: 14px 16px;
+  }
+}
+.menuclosebutton {
+  grid-column-gap: 10px;
+  background-color: #000000;
+}
+
+/* Menü madde ikonu siyah olsun (SVG <img> rengi filtreyle siyaha çekilir) */
+.menulinkwrap .menubulletpointwrap img {
+  filter: brightness(0) saturate(100%) !important; /* full siyah */
+  -webkit-filter: brightness(0) saturate(100%) !important;
+}
+
+/* Menüde /about linkinin metnini 'Hakkımızda' biçimine getir */
+.menulinkwrap[href="/about"] .menulinktext {
+  text-transform: lowercase !important; /* 'HAKKIMIZDA' → 'hakkımızda'  (lang="tr" sayesinde doğru 'ı') */
+}
+.menulinkwrap[href="/about"] .menulinktext::first-letter {
+  text-transform: uppercase !important; /* ilk harf büyük */
+}
+/* Menü madde ikonu: kırmızı → siyah */
+.menulinkwrap .menubulletpointwrap img {
+  filter: brightness(0) saturate(100%) !important;
+  -webkit-filter: brightness(0) saturate(100%) !important;
+}
+/* ===============================
+   🔶 SAYFİYE KOLAJ BÖLÜMÜ
+   (polaroid çerçeve + masonry columns)
+   =============================== */
+:root {
+  --col-line: var(--line);
+  --col-shadow: 0 14px 34px rgba(0, 0, 0, 0.18), 0 2px 8px rgba(0, 0, 0, 0.08);
+  --col-paper: rgba(247, 242, 231, 0.9);
+  --col-glass: rgba(247, 242, 231, 0.72);
+}
+.sayfiye-collage {
+  position: relative;
+  padding-block: clamp(2rem, 6vw, 5rem);
+}
+.sayfiye-collage .collage-head {
+  display: flex;
+  align-items: end;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-bottom: 1.25rem;
+}
+.sayfiye-collage .collage-head .headinglarge {
+  margin: 0;
+  line-height: 1;
+}
+.sayfiye-collage .collage-head .bodylarge {
+  max-width: 66ch;
+}
+
+/* Masonry kolon düzeni */
+.collage-columns {
+  column-count: 4;
+  column-gap: clamp(0.9rem, 2.4vw, 1.25rem);
+}
+@media (max-width: 1100px) {
+  .collage-columns {
+    column-count: 3;
+  }
+}
+@media (max-width: 768px) {
+  .collage-columns {
+    column-count: 2;
+  }
+}
+@media (max-width: 520px) {
+  .collage-columns {
+    column-count: 1;
+  }
+}
+
+/* Polaroid kart */
+.citem {
+  break-inside: avoid;
+  display: block;
+  position: relative;
+  margin: 0 0 clamp(0.9rem, 2.4vw, 1.25rem);
+  background: var(--col-paper);
+  border: 2px solid rgba(0, 0, 0, 0.18);
+  box-shadow: var(--col-shadow);
+  border-radius: 12px;
+  padding: 10px 10px 14px;
+  transform: rotate(var(--rot, 0deg)) translateZ(0);
+  animation: floatY var(--floatT, 7s) ease-in-out infinite alternate;
+  transition: transform 0.45s cubic-bezier(0.2, 0.8, 0.2, 1),
+    box-shadow 0.3s ease;
+}
+.citem:hover {
+  transform: rotate(0deg) translateY(-4px) scale(1.02);
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.22);
+}
+
+/* Foto */
+.citem .photo {
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: var(--ar, 4/5);
+  object-fit: cover;
+  border-radius: 8px;
+  border: 1px solid rgba(0, 0, 0, 0.18);
+  filter: var(--photo-tone); /* sitedeki görsel tonu ile uyum */
+}
+
+/* Cam etiket */
+.citem .cap {
+  margin-top: 0.55rem;
+  text-align: center;
+  background: var(--col-glass);
+  -webkit-backdrop-filter: blur(6px);
+  backdrop-filter: blur(6px);
+  border: 1px solid var(--col-line);
+  border-radius: 8px;
+  padding: 0.55rem 0.8rem;
+  font: 700 0.95rem/1 "Open Sans", system-ui, sans-serif;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: #111;
+}
+
+/* Hafif grid/doku overlay’i */
+.citem::before {
+  content: "";
+  position: absolute;
+  inset: 6px 6px auto 6px;
+  height: 10px;
+  opacity: 0.15;
+  border-radius: 6px;
+  background: repeating-linear-gradient(
+      0deg,
+      rgba(0, 0, 0, 0.06) 0 1px,
+      transparent 1px 18px
+    ),
+    repeating-linear-gradient(
+      90deg,
+      rgba(0, 0, 0, 0.06) 0 1px,
+      transparent 1px 18px
+    );
+  pointer-events: none;
+}
+
+/* Boy oranları (karışık görünüm için) */
+.citem.square {
+  --ar: 1/1;
+}
+.citem.tall {
+  --ar: 3/4;
+}
+.citem.wide {
+  --ar: 16/10;
+}
+.citem.pano {
+  --ar: 16/7;
+}
+
+/* “Rastgele” gibi duran dönüş ve süre varyasyonları */
+.citem:nth-child(3n) {
+  --rot: -3.5deg;
+  --floatT: 7.6s;
+}
+.citem:nth-child(4n) {
+  --rot: 2.5deg;
+  --floatT: 8.2s;
+}
+.citem:nth-child(5n) {
+  --rot: -1.8deg;
+  --floatT: 6.8s;
+}
+.citem:nth-child(6n) {
+  --rot: 4deg;
+  --floatT: 7.2s;
+}
+@keyframes floatY {
+  from {
+    transform: translateY(0) rotate(var(--rot, 0deg));
+  }
+  to {
+    transform: translateY(-8px) rotate(calc(var(--rot, 0deg) * 0.6));
+  }
+}
+
+/* Hover’da foto hafif yakınlaşsın */
+.citem:hover .photo {
+  transform: scale(1.02);
+  transition: transform 0.45s ease;
+}
+
+/* Intersection Observer ile görünür animasyon uyumu (sende zaten var) */
+.sayfiye-collage [data-animate] {
+  opacity: 0;
+  transform: translateY(28px);
+  transition: all 0.9s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+.sayfiye-collage [data-animate].visible {
+  opacity: 1;
+  transform: none;
+}
+/* ===============================
+   ⚡ Max Motion Collage (overlap + random push)
+   =============================== */
+.collage-columns {
+  perspective: 1200px;
+  transform-style: preserve-3d;
+  position: relative;
+  isolation: isolate; /* z-index düzgün çalışsın */
+}
+
+.citem {
+  /* dinamik değişkenler */
+  --tiltX: 0deg;
+  --tiltY: 0deg;
+  --lift: 0px;
+  --scale: 1;
+  --dx: 0px;
+  --dy: 0px; /* rastgele itiş */
+  --z: 0;
+  --glx: 50%;
+  --gly: 50%;
+  position: relative;
+  z-index: var(--z);
+  will-change: transform, box-shadow, filter;
+  transform-origin: center center;
+
+  /* floatY + yeni transform katmanları birlikte */
+  transition: transform 0.28s cubic-bezier(0.2, 0.8, 0.2, 1),
+    box-shadow 0.25s ease, filter 0.25s ease;
+}
+
+/* ana transform – overlap için ölçek ve rastgele itişi dahil et */
+.citem {
+  transform: translate(var(--dx), var(--dy)) translateY(var(--lift))
+    rotate(var(--rot, 0deg)) rotateX(var(--tiltX)) rotateY(var(--tiltY))
+    scale(var(--scale));
+}
+
+/* foto parallax (kart eğimine ters) */
+.citem .photo {
+  transition: transform 0.28s cubic-bezier(0.2, 0.8, 0.2, 1), filter 0.25s ease;
+  transform: translateZ(0) rotateX(calc(var(--tiltX) * -0.35))
+    rotateY(calc(var(--tiltY) * -0.35));
+}
+
+/* parlama (glare) */
+.citem::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  border-radius: 10px;
+  background: radial-gradient(
+    circle at var(--glx) var(--gly),
+    rgba(255, 255, 255, 0.28) 0%,
+    rgba(255, 255, 255, 0.12) 22%,
+    rgba(255, 255, 255, 0) 60%
+  );
+  opacity: 0;
+  transition: opacity 0.2s ease;
+}
+.citem.is-active::after {
+  opacity: 0.85;
+}
+
+/* aktif kart komşuların üstüne çıksın + gölge büyüsün */
+.citem.is-active {
+  --z: 20;
+  filter: saturate(1.05) contrast(1.06);
+  box-shadow: 0 26px 60px rgba(0, 0, 0, 0.28), 0 6px 16px rgba(0, 0, 0, 0.14);
+}
+
+/* komşuları biraz “fade+geri çekme” */
+.citem.dim {
+  filter: saturate(0.85) contrast(0.95) opacity(0.65);
+  transform: translate(var(--dx), var(--dy)) rotate(var(--rot, 0deg))
+    scale(0.98);
+}
+
+/* hafif jitter wiggle (rastgele süre verilecek) */
+@keyframes wiggle {
+  0% {
+    transform: translate(var(--dx), var(--dy)) rotate(var(--rot, 0deg))
+      translateY(var(--lift)) scale(var(--scale));
+  }
+  50% {
+    transform: translate(calc(var(--dx) + 2px), calc(var(--dy) - 2px))
+      rotate(calc(var(--rot, 0deg) + 0.4deg))
+      translateY(calc(var(--lift) - 2px)) scale(calc(var(--scale) + 0.01));
+  }
+  100% {
+    transform: translate(var(--dx), var(--dy)) rotate(var(--rot, 0deg))
+      translateY(var(--lift)) scale(var(--scale));
+  }
+}
+.citem.is-wiggle {
+  animation: wiggle var(--wigT, 900ms) ease-in-out infinite;
+}
+
+/* azaltılmış hareket tercihi */
+@media (prefers-reduced-motion: reduce) {
+  .citem,
+  .citem .photo {
+    transition: none !important;
+    animation: none !important;
+  }
+  .citem::after {
+    display: none;
+  }
+}
+/* === PDF MODAL === */
+.pdf-modal{position:fixed;inset:0;display:flex;align-items:center;justify-content:center;background:rgba(0,0,0,.65);z-index:9999;}
+.pdf-modal[hidden]{display:none!important;}
+.pdf-dialog{position:relative;width:min(1000px,96vw);height:min(90vh,1000px);border-radius:16px;overflow:hidden;box-shadow:0 20px 80px rgba(0,0,0,.5);background:#111;}
+#pdfFrame{width:100%;height:100%;border:0;background:#222;}
+.pdf-close{position:absolute;top:8px;right:8px;width:40px;height:40px;border:0;border-radius:10px;background:rgba(0,0,0,.6);color:#fff;font-size:24px;cursor:pointer;line-height:40px}
+.pdf-title{position:absolute;left:16px;top:12px;color:#fff;font-family:"Bitter","Times New Roman",serif;font-size:14px;opacity:.85}
+.pdf-backdrop{position:absolute;inset:0;}
+.pdf-dialog{ position:relative; z-index:2; }   /* iframe ve kapat tuşu en üstte */
+.pdf-backdrop{ position:absolute; inset:0; z-index:1; } /* dialog'un ALTINDA kalsın */
