@@ -14,6 +14,7 @@
        TEMA DEĞİŞKENLERİ (MAVİ PALET)
        ========================= */
     :root{
+      /* Mavi Gece + Eskitme Altın + Kemik Beyazı */
       --bg-dark: #0a1014;
       --bg-dark-accent: #101820;
       --overlay: rgba(10,16,20,.45);
@@ -24,7 +25,7 @@
       --text-dark-muted: #52483a;
       --gold: #c5a878;
 
-      --beige: #f5f2ed;
+      --beige: #f5f2ed; /* Açık zemin */
       --rule-color: rgba(197,168,120,.40);
       --rule: var(--rule-color);
 
@@ -59,7 +60,7 @@
     /* Preloader akışı için: yüklenirken kaydırma kapalı */
     body.loading { overflow: hidden; }
 
-    img, video{max-width:100%;display:block;border:0}
+    img{max-width:100%;display:block;border:0}
     a{color:inherit;text-decoration:none}
     p{font-style: italic; margin:0}
 
@@ -84,22 +85,53 @@
       place-items: center;
       transition: opacity .8s var(--ease), visibility .8s var(--ease);
     }
-    .preloader.loaded { opacity: 0; visibility: hidden; }
-    .raki-glass-container { position: relative; width: 150px; text-align: center; }
-    .raki-glass-svg { width: 100%; height: auto; overflow: visible; }
+    .preloader.loaded {
+      opacity: 0;
+      visibility: hidden;
+    }
+    .raki-glass-container {
+      position: relative;
+      width: 150px;
+      text-align: center;
+    }
+    .raki-glass-svg {
+      width: 100%;
+      height: auto;
+      overflow: visible;
+    }
     .raki-glass-svg .glass-shape {
       fill: rgba(255, 255, 255, 0.05);
       stroke: rgba(224, 216, 204, 0.3);
       stroke-width: 2;
     }
-    .raki-glass-svg .aslan-sutu { fill: #fff; clip-path: inset(100% 0 0 0); animation: fill-raki 4s var(--ease) .5s forwards; }
-    .preloader-text { font-family: var(--font-display); font-size: 24px; color: var(--muted); margin-top: 20px; opacity: 0; animation: fade-in-text 2s var(--ease) 1.5s forwards; }
-    @keyframes fill-raki { 0%{clip-path: inset(100% 0 0 0)} 80%,100%{clip-path: inset(25% 0 0 0)} }
-    @keyframes fade-in-text { to { opacity: 1 } }
+    .raki-glass-svg .aslan-sutu {
+      fill: #fff;
+      clip-path: inset(100% 0 0 0);
+      animation: fill-raki 4s var(--ease) 0.5s forwards;
+    }
+    .preloader-text {
+      font-family: var(--font-display);
+      font-size: 24px;
+      color: var(--muted);
+      margin-top: 20px;
+      opacity: 0;
+      animation: fade-in-text 2s var(--ease) 1.5s forwards;
+    }
+    @keyframes fill-raki {
+      0% { clip-path: inset(100% 0 0 0); }
+      80%, 100% { clip-path: inset(25% 0 0 0); }
+    }
+    @keyframes fade-in-text { to { opacity: 1; } }
 
     /* ===== DUMAN EFEKTİ CANVAS ===== */
     #smoke-canvas {
-      position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: 1500; pointer-events: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 1500;
+      pointer-events: none; /* Canvas'ın tıklamaları engellememesi için */
     }
 
     /* = NAV = */
@@ -149,10 +181,8 @@
     @media(max-width:880px){
       .burger{display:block}
       .menu{
-        display:none;position:absolute;top:78px;left:0;right:0;width:100%;
-        background:rgba(10,16,20,.96);
-        border-bottom:1px solid rgba(197,168,120,.12);
-        padding:16px 24px; /* taşmayı önler */
+        display:none;position:absolute;top:78px;right:0;background:rgba(10,16,20,.96);
+        border-bottom:1px solid rgba(197,168,120,.12);padding:16px 120px
       }
       .menu.open{display:block}
       .links{gap:14px;flex-direction:column;align-items:flex-start}
@@ -162,9 +192,9 @@
 
     .scroll-progress { position: fixed; top: 0; left: 0; height: 3px; width: 0; background: linear-gradient(90deg,var(--gold),var(--text)); z-index: 1200; transition: width .1s linear; }
 
-    /* = HERO (VİDEO DESTEKLİ) = */
+    /* = HERO = */
     .hero{position:relative;height:100vh;min-height:640px;overflow:hidden}
-    .hero .bg-media{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;
+    .hero .bg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;
       filter:brightness(.8) contrast(1.05); transform:scale(1.06); will-change: transform, filter;
       transition: filter .4s linear;
     }
@@ -234,8 +264,7 @@
     .menu-card:hover{transform:translateY(-8px);box-shadow:0 16px 48px rgba(0,0,0,.25)}
     .menu-card a{text-decoration:none}
     .card-image-wrap{position:absolute;inset:0}
-    .card-image-wrap img, .card-image-wrap video{width:100%;height:100%;object-fit:cover;}
-    .card-image-wrap video{background:#000}
+    .card-image-wrap img{width:100%;height:100%;object-fit:cover;transition:transform .6s var(--ease),filter .4s var(--ease)}
     .menu-card:hover .card-image-wrap img{transform:scale(1.05);filter:brightness(.7) saturate(1.1)}
     .menu-card::after{content:"";position:absolute;inset:0;background:rgba(0,0,0,.1);transition:background .4s var(--ease)}
     .menu-card:hover::after{background:linear-gradient(180deg, transparent 50%, rgba(0,0,0,.7))}
@@ -243,7 +272,7 @@
     .menu-card:hover::before{ opacity:1 }
     .card-content{position:absolute;bottom:0;left:0;right:0;padding:24px;text-align:center;z-index:2}
     .card-content h3{color:#e0d8cc;text-shadow:0 2px 4px rgba(0,0,0,.4);transform:translateY(20px);opacity:0;transition:transform .5s var(--ease) .1s,opacity .5s var(--ease) .1s}
-    .menu-card.in-view .card-content h3{transform:translateY(0);opacity:1}
+    .menu-card:hover .card-content h3{transform:translateY(0);opacity:1}
 
     /* SSS */
     .faq{max-width:1000px;margin:0 auto;padding:var(--s-8) var(--s-3)}
@@ -293,7 +322,7 @@
       position: relative;
       color: #333;
       background: var(--beige);
-      overflow: visible !important;
+      overflow: visible !important; /* DÜZELTME: Bu satır sticky'nin çalışmasını sağlar */
     }
     .scrolly-stage {
       height: 100vh;
@@ -329,29 +358,18 @@
       font-size: 28px;
       color: #333;
       text-align: center;
-      opacity: 0;
-      transform: translateY(12px);
-      transition: opacity .6s var(--ease), transform .6s var(--ease);
     }
 
-    /* =========================
-       RESPONSIVE
-       ========================= */
-
-    /* 1) Dark ve tüm two-col bölümler 1100px altında tek kolona düşsün (üst üste binmeyi engeller) */
-    @media (max-width:1100px){
-      .two-col, .two-col.reversed { grid-template-columns:1fr; gap: var(--s-5); }
-      .two-col.reversed > :first-child,
-      .two-col.reversed > :last-child { grid-column: 1 !important; grid-row: auto !important; }
-    }
-
-    /* 2) Küçük ekranlarda tipografi/padding güvenli aralığa insin */
-    @media (max-width:768px){
-      .wrap{ padding: var(--s-6) var(--s-3); }
-      .band.bg-dark .wrap{ padding: var(--s-6) var(--s-3); }
-      .serif-title{ font-size: clamp(24px, 7vw, 34px); }
-      .muted{ font-size: 16px; line-height: 1.7; }
-      .map-frame{ height:300px }
+    /* RESPONSIVE */
+    @media(max-width:992px){
+      .two-col, .two-col.reversed {grid-template-columns:1fr}
+      .two-col.reversed > :first-child, .two-col.reversed > :last-child { grid-column: 1; }
+      .two-col > :first-child { order: 1; }
+      .two-col > :last-child { order: 2; }
+      .two-col.reversed > :first-child { order: 1; }
+      .two-col.reversed > :last-child { order: 2; }
+      .contact-grid{grid-template-columns:1fr;gap:22px;padding:48px 20px}
+      .map-frame{height:300px}
     }
 
     /* A11Y / Motion */
@@ -365,9 +383,6 @@
 
     /* GPU compositing ipucu */
     .menu-card:hover, .btn:hover, .links a:hover { will-change: transform, opacity; }
-
-    /* === Video yardımcı sınıflar === */
-    .video-cover{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;border-radius:var(--radius)}
   </style>
 </head>
 <body class="loading">
@@ -395,6 +410,7 @@
     <nav class="nav" id="nav" role="navigation" aria-label="Ana menü">
         <div class="nav-inner">
           <a class="brand" href="#home" aria-label="Sayfiye Evi ana sayfa">
+            <img src="assets/images/balik.png" alt="" id="brandLogo" />
             <span>Sayfiye Evi</span>
           </a>
     
@@ -433,7 +449,7 @@
     <div class="scroll-progress" id="scrollProgress" aria-hidden="true"></div>
 
     <header id="home" class="hero" role="banner">
-        <video class="bg-media" src="assets/videos/ortam.mp4" autoplay muted loop playsinline preload="metadata" poster="assets/images/manzara.png" aria-hidden="true"></video>
+        <img class="bg" src="assets/images/manzara.png" alt="Rakı balık sofrası" decoding="async" />
         <div class="hero-inner">
             <h1 class="display" data-i18n="hero_title">Sayfiye Evi</h1>
         </div>
@@ -455,102 +471,94 @@ Sayfiye Evi, sadece bir mekân değil; Ege’nin ritmini taşıyan bir yaşam bi
 
 Kapıdan içeri adım atar atmaz yüzüne çarpan koku zeytinyağıdır—taze, parlak ve berrak. Zeytin ağaçlarının gölgesinde kurulan masalar, “yavaşla” der; burada zaman, güneşin turuncuya döndüğü bir akşamüstünün ritmine uyar. İlk tabak gelir: denizden yeni çekilmiş balık, yanına limon kabuğu kadar sade, Ege otu kadar derin. Kadehler hafifçe tokuşur; çınlayan o ses, daha önce burada yaşanmış sohbetlere karışır, yeni bir anıya dönmeye hazırlanır.
 
-Komşu masadan yükselen kahkaha, rüzgârla birlikte senin masana uğrar. </p>
+Komşu masadan yükselen kahkaha, rüzgârla birlikte senin masana uğrar. Garson, “bunu bugün sabah kayalıkların dibinden aldık” derken gözlerinde gurur vardır; çünkü burada her tabak, sadece doymak için değil, iyi yaşamanın küçük bir ritüeli olsun diye hazırlanır. Gün batımı kıyıyı kızıla boyadığında taş duvarlar ısısını geri verir; sohbet derinleşir, denizin sesi bir perde gibi masanın etrafına kapanır.
+
+Bizim için Sayfiye, bir yemeğin ötesinde; dostlarla paylaşılan bir kahkaha, kadehlerde çınlayan bir anı ve denize karşı kurulan bir hayaldir. Her geliş, bir öncekinin üzerine yazılan yeni bir satır; her gidiş, “yine görüşürüz” diyen bir sahnedir. Sayfiye Evi, Ege’nin ruhunu taşıyan bir sığınak; huzurun, doğanın ve lezzetin aynı sofrada buluştuğu o tanıdık ev hissidir.                </p>
             </div>
         </div>
     </section>
 
     <section id="meze" class="band bg-dark">
       <div class="wrap two-col reversed">
-        <div class="reveal reveal-img" data-reveal="slide-left" data-video-src="assets/videos/rezervasyon.mp4">
-          <img class="img-cover" src="assets/images/rezervasyon.png" alt="Zengin meze çeşitleri" loading="lazy" decoding="async" />
+        <div class="reveal reveal-img" data-reveal="slide-left">
+          <img class="img-cover" src="assets/images/meze-3.png" alt="Zengin meze çeşitleri" loading="lazy" decoding="async" />
         </div>
         <div class="reveal text" data-reveal="slide-right">
           <h2 class="serif-title">Rezervasyon Yap</h2>
           <div class="rule" aria-hidden="true"></div>
           <p class="muted">
-			O eşsiz meze sofrasının ilk notası, keyifli bir sohbetin ilk adımı, sizin için özenle hazırladığımız o özel masayla atılır. Bizim için her misafir, en değerli konuğumuzdur ve paylaştığınız her anın kıymetini derinden biliriz.
-
-Bu değerli anların ve gecenin büyüsünün, kapıda beklemenin belirsizliğiyle gölgelenmesine izin vermemek adına, soframızdaki yerinizi önceden ayırtmanızı rica ediyoruz. Rezervasyon, sadece boş bir masa bulma garantisi değil, aynı zamanda o akşamın size adandığının, mutfağımızdan servisimize tüm ekibimizin sizin için hazırlandığının bir güvencesidir.
+            Bizim için meze, sofranın açılış serenadıdır. Urla'nın bereketli topraklarından toplanan taptaze otlar, en saf zeytinyağıyla buluşur. Her biri, kendi hikayesini fısıldayan küçük lezzet tabaklarıdır. Bir kaşık atomun acısı, bir çatal Girit ezmesinin ferahlığı... Mezeler, rakının en sadık yoldaşı, sohbetin ise en lezzetli bahanesidir.
           </p>
-          <a class="btn" style="margin-top:20px;" href="#order">Rezervasyon Yap</a>
+          <div class="button">asd</div>
         </div>
       </div>
     </section>
 
     <section id="arasicak" class="band bg-beige">
       <div class="wrap two-col">
-        <div class="reveal reveal-img" data-reveal="slide-right" data-video-src="assets/videos/meze-3.mp4">
+        <div class="reveal reveal-img" data-reveal="slide-right">
           <img class="img-cover" src="assets/images/meze-3.png" alt="Izgara ahtapot" loading="lazy" decoding="async" />
         </div>
         <div class="reveal text" data-reveal="slide-left">
           <h2 class="serif-title">Meze Sanatı</h2>
           <div class="rule-dark" aria-hidden="true"></div>
           <p class="muted">
-Bizim için meze, sofranın açılış serenadıdır; her notası ayrı bir lezzet tınısı taşıyan ve geceyi unutulmaz kılacak o büyük senfoniye hazırlayan büyülü bir başlangıç. Urla'nın bereketli topraklarından toplanan taptaze otlar, Ege'nin güneşiyle demlenmiş domatesler ve en saf zeytinyağının altın dokunuşuyla buluşur. O zeytinyağı ki, sadece bir malzeme değil, bu toprağın ruhunu ve cömertliğini taşıyan bir iksirdir.
-
-Her biri, kendi hikayesini fısıldayan küçük lezzet tabaklarıdır. Bir kaşık atomun acısı, damağınızda bir anlık bir şimşek çaktırırken, hemen ardından gelen bir çatal Girit ezmesinin cevizli ve peynirli ferahlığı o yangını tatlı bir melteme dönüştürür. Közlenmiş patlıcanın isli kokusu sizi eski bir yaz akşamına götürürken, ipeksi kıvamıyla fava, sadeliğin ne denli asil olabileceğinin kanıtıdır. Deniz börülcesinin iyotlu tadı denizin kendisini, beyaz peynirin asil duruşu ise tüm bu cümbüşün ağırbaşlı bilgesini sofraya taşır.          </p>
+            Soğuk mezelerin ardından masaya gelen bir yaprak ciğer veya güveçte tereyağlı karides, sohbetin ateşini harlar. Ara sıcaklarımız, denizin cömertliğini ve Ege mutfağının sıcaklığını bir araya getirir. Her lokma, masadaki kahkahaları daha da artırmak, anıları daha da ısıtmak içindir.
+          </p>
         </div>
       </div>
     </section>
 
     <section id="anayemek" class="band bg-dark">
       <div class="wrap two-col reversed">
-        <div class="reveal reveal-img" data-reveal="slide-left" data-video-src="assets/videos/balik.mp4">
-          <img class="img-cover" src="assets/images/balik.png" alt="Izgara balık" loading="lazy" decoding="async" />
+        <div class="reveal reveal-img" data-reveal="slide-left">
+          <img class="img-cover" src="assets/images/fahri-baba-bardak.png" alt="Izgara balık" loading="lazy" decoding="async" />
         </div>
         <div class="reveal text" data-reveal="slide-right">
           <h2 class="serif-title">Denizden Sofraya</h2>
           <div class="rule" aria-hidden="true"></div>
           <p class="muted">
-Hikayemiz, daha güneş Ege'nin sularını nazlıca ısıtırken limana dönen balıkçı teknelerinin sesiyle başlar. O nasırlı ellerin denizden çektiği, pulları gümüş gibi parıldayan her bir balık, denizin o günkü cömertliğinin bir nişanıdır. Günün sonunda, işte bu en değerli hazine sofraya gelir.
-
-Balıkçılarımızın ağından çıkan, mevsim neyi fısıldıyorsa o olan en taze balıklar, usta ellerde, adeta bir sanat eserine dönüşür. Fazla söze, karmaşık soslara gerek yoktur. Sadece zeytinyağı, bir tutam tuz ve kor haline gelmiş kömür ateşinin bilgeliği... Ateşin üzerinde duyulan o tatlı cızırtı ve havaya yayılan o isli koku, yaklaşan lezzetin en güzel habercisidir. Amaç, balığın denizden getirdiği o saf, iyotlu tadı maskelemek değil, tam aksine tüm görkemiyle ortaya çıkarmaktır.          </p>
+            Günün sonunda, denizin bize sunduğu en değerli hazine sofraya gelir. Balıkçılarımızın ağından çıkan, mevsimin en taze balıkları, usta ellerde, kömür ateşinin üzerinde usulca pişirilir. Sadeliğin içindeki o mükemmel lezzet, Ege'nin tuzlu sularından gelen bir armağandır. Her balık, denizle aramızdaki o kopmaz bağın bir kanıtıdır.
+          </p>
         </div>
-      </div>
-    </section>
-    <section id="arasicak" class="band bg-beige">
-      <div class="wrap two-col">
-        <div class="reveal reveal-img" data-reveal="slide-right" data-video-src="assets/videos/meze-3.mp4">
-          <img class="img-cover" src="assets/images/fahri-baba-2.png" alt="Izgara ahtapot" loading="lazy" decoding="async" />
-        </div>
-        <div class="reveal text" data-reveal="slide-left">
-          <h2 class="serif-title">Fahri Baba</h2>
-          <div class="rule-dark" aria-hidden="true"></div>
-          <p class="muted">
-Bizim için meze, sofranın açılış serenadıdır; her notası ayrı bir lezzet tınısı taşıyan ve geceyi unutulmaz kılacak o büyük senfoniye hazırlayan büyülü bir başlangıç. Urla'nın bereketli topraklarından toplanan taptaze otlar, Ege'nin güneşiyle demlenmiş domatesler ve en saf zeytinyağının altın dokunuşuyla buluşur. O zeytinyağı ki, sadece bir malzeme değil, bu toprağın ruhunu ve cömertliğini taşıyan bir iksirdir.
-
-Her biri, kendi hikayesini fısıldayan küçük lezzet tabaklarıdır. Bir kaşık atomun acısı, damağınızda bir anlık bir şimşek çaktırırken, hemen ardından gelen bir çatal Girit ezmesinin cevizli ve peynirli ferahlığı o yangını tatlı bir melteme dönüştürür. Közlenmiş patlıcanın isli kokusu sizi eski bir yaz akşamına götürürken, ipeksi kıvamıyla fava, sadeliğin ne denli asil olabileceğinin kanıtıdır. Deniz börülcesinin iyotlu tadı denizin kendisini, beyaz peynirin asil duruşu ise tüm bu cümbüşün ağırbaşlı bilgesini sofraya taşır.          </p>
-        </div>
-      </div>
-    </section>
-    <section id="scrolly-stack" class="band">
-      <div class="scrolly-stage">
-        <figure class="polaroid">
-          <img src="assets/images/raki.jpg" alt="Fahri Baba portresi">
-          <figcaption>“Rakı aceleye gelmez evlat.”</figcaption>
-        </figure>
-        <figure class="polaroid">
-          <img src="assets/images/meze-3.png" alt="Urla'da deniz kenarı">
-          <figcaption>“Önce meze, sonra laf...”</figcaption>
-        </figure>
-        <figure class="polaroid">
-          <img src="assets/images/meze-4.png" alt="Balıkçı teknesi">
-          <figcaption>“Dalgalar konuşur, biz tercüme ederiz.”</figcaption>
-        </figure>
-        <figure class="polaroid">
-          <img src="assets/images/raki.png" alt="Rakı kadehi">
-          <figcaption>“Sadece göz göze bir tebessüm...”</figcaption>
-        </figure>
-        <figure class="polaroid">
-          <img src="assets/images/bar.png" alt="Bar detayı">
-          <figcaption>“Sadece göz göze bir tebessüm...”</figcaption>
-        </figure>
       </div>
     </section>
 
     <section class="quote-full" aria-label="Söz">
-      <div class="bg" aria-hidden="true"><img src="assets/images/manzara.png" alt="Urla gün batımı" loading="lazy" decoding="async"/></div>
+      <div class="bg" aria-hidden="true"><img src="assets/images/masa-2.png" alt="" loading="lazy" decoding="async" /></div>
+      <div class="content reveal" data-reveal="fade-up">
+        <div class="q" data-i18n="quote1">“Dost meclisinde rakı, deniz sesiyle kıvam bulur.”</div>
+      </div>
+    </section>
+
+  <section id="scrolly-stack" class="band">
+    <div class="scrolly-stage">
+      <figure class="polaroid">
+        <img src="assets/images/raki.jpg" alt="Fahri Baba portresi">
+        <figcaption>“Rakı aceleye gelmez evlat.”</figcaption>
+      </figure>
+      <figure class="polaroid">
+        <img src="assets/images/meze-3.png" alt="Urla'da deniz kenarı">
+        <figcaption>“Önce meze, sonra laf...”</figcaption>
+      </figure>
+      <figure class="polaroid">
+        <img src="assets/images/meze-4.png" alt="Balıkçı teknesi">
+        <figcaption>“Dalgalar konuşur, biz tercüme ederiz.”</figcaption>
+      </figure>
+      <figure class="polaroid">
+        <img src="assets/images/raki.png" alt="Rakı kadehi">
+        <figcaption>“Sadece göz göze bir tebessüm...”</figcaption>
+      </figure>
+            <figure class="polaroid">
+        <img src="assets/images/bar.png" alt="Rakı kadehi">
+        <figcaption>“Sadece göz göze bir tebessüm...”</figcaption>
+      </figure>
+    </div>
+  </section>
+
+
+    <section class="quote-full" aria-label="Söz">
+      <div class="bg" aria-hidden="true"><img src="assets/images/bina-cizim-2.png" alt="Urla gün batımı" loading="lazy" decoding="async"/></div>
       <div class="content reveal" data-reveal="fade-up">
         <div class="q" data-i18n="quote2">“Sayfiye’de masalar sadece yemeklerle değil, anılarla da doluyor.”</div>
       </div>
@@ -560,19 +568,19 @@ Her biri, kendi hikayesini fısıldayan küçük lezzet tabaklarıdır. Bir kaş
       <div class="wrap three-card-grid">
         <div class="menu-card reveal" data-reveal="fade-up">
           <a href="#menu-details">
-            <div class="card-image-wrap"><video src="assets/videos/bardak-1.mp4" muted loop playsinline preload="metadata" data-autoplay aria-hidden="true"></video></div>
+            <div class="card-image-wrap"><img src="assets/images/ev.png" alt="Mezeler" loading="lazy" decoding="async"/></div>
             <div class="card-content"><h3 class="h3" data-i18n="card_menu">Menü</h3></div>
           </a>
         </div>
         <div class="menu-card reveal" data-reveal="fade-up">
           <a href="#about">
-            <div class="card-image-wrap"><video src="assets/videos/ortam.mp4" muted loop playsinline preload="metadata" data-autoplay aria-hidden="true"></video></div>
+            <div class="card-image-wrap"><img src="assets/images/manzara.png" alt="Deniz mahsulleri" loading="lazy" decoding="async"/></div>
             <div class="card-content"><h3 class="h3" data-i18n="card_discover">Keşfet</h3></div>
           </a>
         </div>
         <div class="menu-card reveal" data-reveal="fade-up">
           <a href="#order">
-            <div class="card-image-wrap"><video src="assets/videos/raki-1.mp4" muted loop playsinline preload="metadata" data-autoplay aria-hidden="true"></video></div>
+            <div class="card-image-wrap"><img src="assets/images/fahri-baba-bardak.png" alt="Rakı sofrası" loading="lazy" decoding="async"/></div>
             <div class="card-content"><h3 class="h3" data-i18n="card_res">Rezervasyon</h3></div>
           </a>
         </div>
@@ -669,26 +677,37 @@ Her biri, kendi hikayesini fısıldayan küçük lezzet tabaklarıdır. Bir kaş
     
     window.addEventListener('load', () => {
         setTimeout(() => {
-            if (preloader) preloader.classList.add('loaded');
+            if (preloader) {
+                preloader.classList.add('loaded');
+            }
             if(mainContent) {
                 mainContent.style.visibility = 'visible';
                 mainContent.style.opacity = 1;
                 mainContent.style.transition = 'opacity 1s ease';
             }
             document.body.classList.remove('loading');
-            preloader?.addEventListener('transitionend', () => { preloader.style.display = 'none'; });
-        }, 4500);
+            
+            if (preloader) {
+                preloader.addEventListener('transitionend', () => {
+                    preloader.style.display = 'none';
+                });
+            }
+        }, 4500); // SVG dolum + yazı fade ile senkron
     });
 
-    // ===== DOM Referansları =====
-    const nav       = document.getElementById('nav');
-    const burger    = document.getElementById('burger');
-    const menuPanel = document.getElementById('menuPanel');
-    const links     = Array.from(document.querySelectorAll('.links a[href^="#"]'));
-    const sections  = links.map(a => document.querySelector(a.getAttribute('href'))).filter(Boolean);
+    // ===== DOM Referansları ve Değişkenler =====
+    const nav          = document.getElementById('nav');
+    const burger       = document.getElementById('burger');
+    const menuPanel    = document.getElementById('menuPanel');
+    const links        = Array.from(document.querySelectorAll('.links a[href^="#"]'));
+    const sections     = links.map(a => document.querySelector(a.getAttribute('href'))).filter(Boolean);
     const langButtons  = document.querySelectorAll('.lang-btn');
+    const brandLogo    = document.getElementById('brandLogo');
     const resForm      = document.getElementById('resForm');
     const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    // ===== Temel Fonksiyonlar =====
+    if (brandLogo) { brandLogo.addEventListener('error', () => { brandLogo.style.display = 'none'; }); }
 
     if (burger && menuPanel) {
       burger.addEventListener('click', () => {
@@ -711,9 +730,10 @@ Her biri, kendi hikayesini fısıldayan küçük lezzet tabaklarıdır. Bir kaş
     window.addEventListener('scroll', setBar, { passive: true });
     setBar();
 
-    // ===== Scroll Reveal =====
-    const revealEls = document.querySelectorAll('.reveal, .reveal-img, .menu-card');
+    // ===== Scroll Reveal (IO ile) =====
+    const revealEls = document.querySelectorAll('.reveal, .reveal-img');
     if (!prefersReducedMotion && 'IntersectionObserver' in window) {
+        // Aynı wrap içindeki öğelere kademeli gecikme
         const parentGroups = new Map();
         revealEls.forEach(el => {
             const p = el.parentElement; if (!p) return;
@@ -751,13 +771,13 @@ Her biri, kendi hikayesini fısıldayan küçük lezzet tabaklarıdır. Bir kaş
       sections.forEach(s => spy.observe(s));
     }
 
-    // ===== i18n =====
+    // ===== i18n (Uluslararasılaştırma) =====
     const i18n = {
       tr:{
         nav_home:"ANA SAYFA",nav_menu:"MENÜ",nav_fahri:"FAHRİ BABA",nav_raki:"RAKI",nav_order:"REZERVASYON",nav_contact:"İLETİŞİM",nav_faq:"SSS",
         hero_title:"Sayfiye Evi",
         about_title:"Urla'nın Kalbinde Bir Nefes",
-        about_p:"Sayfiye Evi, sadece bir mekân değil; Ege’nin ritmini taşıyan bir yaşam biçimidir. Yazın ilk akşamlarında, denizden esen ılık rüzgâr masanın üzerine serili keten örtüyü hafifçe dalgalandırırken, taş duvarların serinliği yüzyılların hikâyesini fısıldar. İçeriden bakır tavalarda otların tıslayan sesi gelir; dışarıda dalgalar kıyıya usul usul vurarak sanki sofraya tempo tutar. Kapıdan içeri adım atar atmaz yüzüne çarpan koku zeytinyağıdır—taze, parlak ve berrak. Zeytin ağaçlarının gölgesinde kurulan masalar, “yavaşla” der; burada zaman, güneşin turuncuya döndüğü bir akşamüstünün ritmine uyar. İlk tabak gelir: denizden yeni çekilmiş balık, yanına limon kabuğu kadar sade, Ege otu kadar derin.",
+        about_p:"Sayfiye Evi, sadece bir mekân değil; Ege’nin ritmini taşıyan bir yaşam biçimidir. Yazın ilk akşamlarında, denizden esen ılık rüzgâr masanın üzerine serili keten örtüyü hafifçe dalgalandırırken, taş duvarların serinliği yüzyılların hikâyesini fısıldar. İçeriden bakır tavalarda otların tıslayan sesi gelir; dışarıda dalgalar kıyıya usul usul vurarak sanki sofraya tempo tutar. Kapıdan içeri adım atar atmaz yüzüne çarpan koku zeytinyağıdır—taze, parlak ve berrak. Zeytin ağaçlarının gölgesinde kurulan masalar, “yavaşla” der; burada zaman, güneşin turuncuya döndüğü bir akşamüstünün ritmine uyar. İlk tabak gelir: denizden yeni çekilmiş balık, yanına limon kabuğu kadar sade, Ege otu kadar derin. Kadehler hafifçe tokuşur; çınlayan o ses, daha önce burada yaşanmış sohbetlere karışır, yeni bir anıya dönmeye hazırlanır. Komşu masadan yükselen kahkaha, rüzgârla birlikte senin masana uğrar. Garson, “bunu bugün sabah kayalıkların dibinden aldık” derken gözlerinde gurur vardır; çünkü burada her tabak, sadece doymak için değil, iyi yaşamanın küçük bir ritüeli olsun diye hazırlanır. Gün batımı kıyıyı kızıla boyadığında taş duvarlar ısısını geri verir; sohbet derinleşir, denizin sesi bir perde gibi masanın etrafına kapanır.",
         quote1:"“Dost meclisinde rakı, deniz sesiyle kıvam bulur.”",
         quote2:"“Sayfiye’de masalar sadece yemeklerle değil, anılarla da doluyor.”",
         raki_title:"Sayfiye'de Rakı İçmek mi?",
@@ -785,7 +805,7 @@ Her biri, kendi hikayesini fısıldayan küçük lezzet tabaklarıdır. Bir kaş
         raki_p:"Here, rakı is like a wise friend that slows time. Glasses are filled not in haste but by savoring each sip and diving deep into conversation amidst the anise-scented haze. The rakı table is a meeting point where time stops, memories are refreshed, and stories are told anew. This table represents a code of conduct, a culture, an art of sharing. We invite you to Sayfiye not just for a drink, but to rest your soul and gather memories that will leave a mark on your heart.",
         card_menu:"Menu",card_discover:"Explore",card_res:"Reservation",
         order_title:"Reservation",
-        order_p1:"By phone: <strong>+90 (232) 000 00 00</strong><br>For WhatsApp, tap the ",
+        order_p1:"By phone: <strong>+90 (232) 000 00 00</strong><br>For WhatsApp, tap the \"Contact!\" button at the bottom right.",
         order_p2:"Weekdays 17:00–23:30 • Weekends 16:00–01:00",
         ph_name:"Full name",ph_phone:"Phone",ph_date:"Date",ph_time:"Time",ph_people:"Guests",btn_send:"SEND",
         faq_title:"Frequently Asked Questions",q1:"Is there parking?",a1:"-Yes. Free evening parking; valet helps when full.",
@@ -830,13 +850,13 @@ Her biri, kendi hikayesini fısıldayan küçük lezzet tabaklarıdır. Bir kaş
     // ===== Harekete Duyarlı Animasyonlar =====
     if (!prefersReducedMotion) {
       // Hero Parallax
-      const heroMedia = document.querySelector('.hero .bg-media');
+      const heroBg = document.querySelector('.hero .bg');
       const parallax = () => {
-        if (!heroMedia) return;
+        if (!heroBg) return;
         const y = window.scrollY || 0;
         const blurAmount = Math.min(y * 0.01, 5);
-        heroMedia.style.transform = `translateY(${y * 0.15}px) scale(1.06)`;
-        heroMedia.style.filter = `brightness(.8) contrast(1.05) blur(${blurAmount}px)`;
+        heroBg.style.transform = `translateY(${y * 0.15}px) scale(1.06)`;
+        heroBg.style.filter = `brightness(.8) contrast(1.05) blur(${blurAmount}px)`;
       };
       window.addEventListener('scroll', parallax, { passive: true });
       parallax();
@@ -861,17 +881,19 @@ Her biri, kendi hikayesini fısıldayan küçük lezzet tabaklarıdır. Bir kaş
       });
     
       // Polaroid Galeri
+      // Polaroid Galeri
+// Polaroid Galeri
       const scrollyStackModule = () => {
         const section = document.getElementById('scrolly-stack');
         if (!section) return;
         const cards = Array.from(section.querySelectorAll('.polaroid'));
         const numCards = cards.length;
         if (numCards === 0) return;
+  
+        // Her bir kartın animasyonu için 100vh (1 ekran boyu) kaydırma mesafesi tanıyoruz.
         const scrollPerCard = 100; 
         const totalStackHeight = numCards * scrollPerCard;
         section.style.height = `${totalStackHeight}vh`;
-
-        const clamp = (v, min, max) => Math.max(min, Math.min(max, v));
 
         const onScroll = () => {
           const sectionRect = section.getBoundingClientRect();
@@ -883,33 +905,38 @@ Her biri, kendi hikayesini fısıldayan küçük lezzet tabaklarıdır. Bir kaş
           cards.forEach((card, i) => {
             const start = i / numCards;
             const end = (i + 1) / numCards;
-            const finalRotation = (i - (numCards - 1) / 2) * 4;
-            const initialXDirection = (i % 2 === 0) ? -100 : 100;
+
+            // Her kart için hafif farklı bir son dönüş açısı belirleyelim
+            const finalRotation = (i - (numCards - 1) / 2) * 4; // Ortadaki kart 0 derece olacak şekilde ayarlar
+
+            // Kartın hangi yönden geleceğini belirleyelim (çiftler soldan, tekler sağdan)
+            const initialXDirection = (i % 2 === 0) ? -100 : 100; // vw cinsinden
 
             let transform = '', zIndex = i;
-            const cap = card.querySelector('figcaption');
 
             if (progress < start) {
+              // Henüz sırası gelmemiş kartlar: Ekranın sağında veya solunda beklesin
               transform = `translateX(${initialXDirection}vw) scale(0.8) rotate(0deg)`;
               zIndex = i;
-              if (cap) { cap.style.opacity = 0; cap.style.transform = 'translateY(12px)'; }
             } else if (progress > end) {
+              // Sırası geçmiş ve desteye eklenmiş kartlar: Ortada, son pozisyonunda sabit dursun
               transform = `translateY(0) scale(1) rotate(${finalRotation}deg)`;
               zIndex = i;
-              if (cap) { cap.style.opacity = 1; cap.style.transform = 'translateY(0px)'; }
             } else {
-              const local = (progress - start) / (end - start);
+              // Animasyon sırası gelen aktif kart
+              const local = (progress - start) / (end - start); // Bu kartın kendi animasyon ilerlemesi (0'dan 1'e)
+              
+              // Yanlardan ortaya doğru gelsin
               const currentX = (1 - local) * initialXDirection;
+              // Yavaşça büyüsün
               const currentScale = 0.8 + local * 0.2;
+              // Son pozisyonundaki dönüş açısına yavaşça dönsün
               const currentRotation = local * finalRotation;
+              
               transform = `translateX(${currentX}vw) scale(${currentScale}) rotate(${currentRotation}deg)`;
-              zIndex = numCards;
-              if (cap) {
-                const a = clamp((local - 0.2) / 0.6, 0, 1);
-                cap.style.opacity = a.toFixed(3);
-                cap.style.transform = `translateY(${(1 - a) * 12}px)`;
-              }
+              zIndex = numCards; // Animasyon sırasında en üste çıksın
             }
+            
             card.style.transform = transform;
             card.style.zIndex = zIndex;
           });
@@ -919,52 +946,60 @@ Her biri, kendi hikayesini fısıldayan küçük lezzet tabaklarıdır. Bir kaş
       };
       scrollyStackModule();
 
-      // Görsel bölümleri videoya çevir (varsa). Fallback otomatik resim.
-      const videoify = () => {
-        document.querySelectorAll('.reveal-img[data-video-src]').forEach(wrap => {
-          const src = wrap.getAttribute('data-video-src');
-          if (!src || wrap.querySelector('video.video-cover')) return;
-          const v = document.createElement('video');
-          v.className = 'video-cover';
-          v.src = src; v.muted = true; v.loop = true; v.playsInline = true; v.preload = 'metadata';
-          const img = wrap.querySelector('img');
-          const cleanup = () => { v.remove(); if (img) img.style.visibility = ''; };
-          v.addEventListener('canplay', () => { if (img) img.style.visibility = 'hidden'; v.play().catch(()=>{}); }, { once:true });
-          v.addEventListener('error', cleanup, { once:true });
-          wrap.style.position = 'relative';
-          wrap.prepend(v);
+      // Canvas Duman Efekti
+      const canvas = document.getElementById('smoke-canvas');
+      if (canvas) {
+        const ctx = canvas.getContext('2d');
+        let particles = [], mouse = { x: null, y: null };
+        const setCanvasSize = () => {
+          canvas.width = window.innerWidth;
+          canvas.height = window.innerHeight;
+        };
+        setCanvasSize();
+        window.addEventListener('resize', setCanvasSize);
+        document.addEventListener('mousemove', e => {
+            mouse.x = e.x;
+            mouse.y = e.y;
+            for (let i = 0; i < 2; i++) { particles.push(new Particle()); }
         });
-      };
-      videoify();
-
-      // Kart videolarını görünürlükte oynat/durdur
-      const autoVideos = document.querySelectorAll('video[data-autoplay]');
-      if ('IntersectionObserver' in window && autoVideos.length) {
-        const vio = new IntersectionObserver(entries => {
-          entries.forEach(async ({ target, isIntersecting }) => {
-            const v = target;
-            try {
-              if (isIntersecting) {
-                if (v.paused) { v.currentTime = 0; await v.play().catch(()=>{}); }
-                v.closest('.menu-card')?.classList.add('in-view');
-              } else {
-                v.pause();
-                v.closest('.menu-card')?.classList.remove('in-view');
-              }
-            } catch (e) {}
-          });
-        }, { threshold: 0.35 });
-        autoVideos.forEach(v => vio.observe(v));
+        class Particle {
+          constructor() {
+            this.x = mouse.x; this.y = mouse.y;
+            this.size = Math.random() * 2 + 1;
+            this.speedX = (Math.random() * 2 - 1) * 0.5;
+            this.speedY = (Math.random() * 2 - 1) * 0.5;
+            this.color = `rgba(197, 168, 120, ${Math.random() * 0.5 + 0.2})`;
+            this.life = Math.random() * 100 + 50;
+          }
+          update() {
+            this.x += this.speedX; this.y += this.speedY;
+            if (this.size > 0.1) this.size -= 0.03;
+            this.life--;
+          }
+          draw() {
+            ctx.fillStyle = this.color;
+            ctx.beginPath();
+            ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+            ctx.fill();
+          }
+        }
+        function handleParticles() {
+          for (let i = 0; i < particles.length; i++) {
+            particles[i].update();
+            particles[i].draw();
+            if (particles[i].size <= 0.1 || particles[i].life <= 0) {
+              particles.splice(i, 1);
+              i--;
+            }
+          }
+        }
+        function animate() {
+          ctx.clearRect(0, 0, canvas.width, canvas.height);
+          handleParticles();
+          requestAnimationFrame(animate);
+        }
+        animate();
       }
-
-      // Sekme gizlenince videoları durdur, geri gelince uygun olanları oynat
-      document.addEventListener('visibilitychange', () => {
-        const vids = document.querySelectorAll('video');
-        vids.forEach(v => {
-          if (document.hidden) v.pause();
-          else if (v.hasAttribute('data-autoplay') || v.classList.contains('bg-media')) { v.play().catch(()=>{}); }
-        });
-      });
     }
 
   })();
