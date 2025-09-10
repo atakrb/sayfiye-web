@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="tr">
+<html lang="en">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Urla Sayfiye Evi – Rakı Balık</title>
+    <title>Urla Sayfiye Evi – Raki & Fish</title>
 
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -31,14 +31,14 @@
           </g>
           <path class="glass-shape" d="M10 0 L0 200 H100 L90 0 Z" />
         </svg>
-        <div class="preloader-text">Rakı kıvamını buluyor...</div>
+        <div class="preloader-text" data-i18n="preloader_text">The raki is finding its consistency...</div>
       </div>
     </div>
 
     <canvas id="smoke-canvas"></canvas>
 
     <main id="main-content" style="visibility: hidden; opacity: 0">
-      <nav class="nav" id="nav" role="navigation" aria-label="Ana menü">
+      <nav class="nav" id="nav" role="navigation" aria-label="Main menu">
         <div class="nav-inner">
           <a class="brand" href="#home" aria-label="Sayfiye Evi">
             <img src="assets/images/logo.png" alt="Sayfiye Evi" />
@@ -47,13 +47,13 @@
           <div class="menu" id="menuPanel">
             <div class="links" id="links">
               <a href="#home" data-i18n="nav_home">HOME</a>
-              <a href="#menu" data-i18n="nav_menu">MENU</a>
+              <a href="#menu-ring" data-i18n="nav_menu">MENU</a>
               <a href="#scrolly-stack" data-i18n="nav_fahri">FAHRI BABA</a>
-              <a href="#order" data-i18n="nav_order">REZERVASYON</a>
-              <a href="#contact" data-i18n="nav_contact">ILETISIM</a>
+              <a href="#order" data-i18n="nav_order">RESERVATION</a>
+              <a href="#contact" data-i18n="nav_contact">CONTACT</a>
 
               <div class="mobile-only">
-                <a class="right-link" href="#sss" data-i18n="nav_faq">SSS</a>
+                <a class="right-link" href="#sss" data-i18n="nav_faq">FAQ</a>
                 <div class="lang-switch">
                   <button class="lang-btn" data-lang="tr" type="button">
                     TR
@@ -67,8 +67,8 @@
           </div>
 
           <div class="right-controls">
-            <a class="right-link" href="#sss" data-i18n="nav_faq">SSS</a>
-            <div class="lang-switch" aria-label="Dil seçimi">
+            <a class="right-link" href="#sss" data-i18n="nav_faq">FAQ</a>
+            <div class="lang-switch" aria-label="Language selection">
               <button class="lang-btn" data-lang="tr" type="button">TR</button>
               <button class="lang-btn" data-lang="en" type="button">EN</button>
             </div>
@@ -77,7 +77,7 @@
           <button
             class="burger"
             id="burger"
-            aria-label="Menüyü aç/kapat"
+            aria-label="Open/close menu"
             aria-expanded="false"
             aria-controls="menuPanel"
             type="button"
@@ -118,31 +118,18 @@
             <img
               class="img-cover"
               src="assets/images/raki.png"
-              alt="Meze ve balık tabağı"
+              alt="Meze and fish plate"
               loading="lazy"
               decoding="async"
             />
           </div>
           <div class="reveal text" data-reveal="slide-left">
             <h2 class="serif-title" data-i18n="about_title">
-              Urla'nın Kalbinde Bir Nefes
+              A Breath in the Heart of Urla
             </h2>
             <div class="rule-dark" aria-hidden="true"></div>
             <p class="muted" data-i18n="about_p">
-              Sayfiye Evi, sadece bir mekân değil; Ege’nin ritmini taşıyan bir
-              yaşam biçimidir. Yazın ilk akşamlarında, denizden esen ılık rüzgâr
-              masanın üzerine serili keten örtüyü hafifçe dalgalandırırken, taş
-              duvarların serinliği yüzyılların hikâyesini fısıldar. İçeriden
-              bakır tavalarda otların tıslayan sesi gelir; dışarıda dalgalar
-              kıyıya usul usul vurarak sanki sofraya tempo tutar. Kapıdan içeri
-              adım atar atmaz yüzüne çarpan koku zeytinyağıdır—taze, parlak ve
-              berrak. Zeytin ağaçlarının gölgesinde kurulan masalar, “yavaşla”
-              der; burada zaman, güneşin turuncuya döndüğü bir akşamüstünün
-              ritmine uyar. İlk tabak gelir: denizden yeni çekilmiş balık,
-              yanına limon kabuğu kadar sade, Ege otu kadar derin. Kadehler
-              hafifçe tokuşur; çınlayan o ses, daha önce burada yaşanmış
-              sohbetlere karışır, yeni bir anıya dönmeye hazırlanır. Komşu
-              masadan yükselen kahkaha, rüzgârla birlikte senin masana uğrar.
+              Sayfiye Evi is not just a place; it is a way of life that carries the rhythm of the Aegean. On the first evenings of summer, while the warm breeze from the sea gently ripples the linen tablecloth, the coolness of the stone walls whispers tales of centuries. From inside comes the sizzling sound of herbs in copper pans; outside, the waves gently lap the shore, as if keeping tempo with the meal. As soon as you step through the door, the scent that hits your face is olive oil—fresh, bright, and clear. The tables set under the shade of olive trees say, "slow down"; here, time adapts to the rhythm of an afternoon when the sun turns orange. The first dish arrives: fish just pulled from the sea, as simple as a lemon peel, as deep as an Aegean herb. Glasses clink lightly; that ringing sound mixes with conversations had here before, preparing to become a new memory. Laughter from a neighboring table drifts over to yours with the wind.
             </p>
           </div>
         </div>
@@ -158,28 +145,20 @@
             <img
               class="img-cover"
               src="assets/images/rezervasyon.jpg"
-              alt="Zengin meze çeşitleri"
+              alt="A rich variety of mezes"
               loading="lazy"
               decoding="async"
             />
           </div>
           <div class="reveal text" data-reveal="slide-right">
-            <h2 class="serif-title">Rezervasyon Yap</h2>
+            <h2 class="serif-title" data-i18n="reservation_title">Make a Reservation</h2>
             <div class="rule" aria-hidden="true"></div>
-            <p class="muted">
-              O eşsiz meze sofrasının ilk notası, keyifli bir sohbetin ilk
-              adımı, sizin için özenle hazırladığımız o özel masayla atılır.
-              Bizim için her misafir, en değerli konuğumuzdur ve paylaştığınız
-              her anın kıymetini derinden biliriz. Bu değerli anların ve gecenin
-              büyüsünün, kapıda beklemenin belirsizliğiyle gölgelenmesine izin
-              vermemek adına, soframızdaki yerinizi önceden ayırtmanızı rica
-              ediyoruz. Rezervasyon, sadece boş bir masa bulma garantisi değil,
-              aynı zamanda o akşamın size adandığının, mutfağımızdan servisimize
-              tüm ekibimizin sizin için hazırlandığının bir güvencesidir.
+            <p class="muted" data-i18n="reservation_p">
+              The first note of that unique meze table, the first step of a pleasant conversation, begins with that special table we have carefully prepared for you. For us, every guest is our most valued guest, and we deeply appreciate every moment you share. To prevent the magic of these precious moments and the night from being overshadowed by the uncertainty of waiting at the door, we kindly ask you to reserve your place at our table in advance. A reservation is not just a guarantee of finding an empty table, but also an assurance that the evening is dedicated to you, and that our entire team, from our kitchen to our service, is ready for you.
             </p>
             <a href="#order" class="cta-res">
               <i class="mdi mdi-calendar-clock-outline" aria-hidden="true"></i>
-              <span class="txt">Rezervasyon Yap</span>
+              <span class="txt" data-i18n="reservation_button">Make a Reservation</span>
               <i class="mdi mdi-arrow-right arrow" aria-hidden="true"></i>
             </a>
           </div>
@@ -196,30 +175,16 @@
             <img
               class="img-cover"
               src="assets/images/meze-3.png"
-              alt="Izgara ahtapot"
+              alt="Grilled octopus"
               loading="lazy"
               decoding="async"
             />
           </div>
           <div class="reveal text" data-reveal="slide-left">
-            <h2 class="serif-title">Meze Sanatı</h2>
+            <h2 class="serif-title" data-i18n="meze_title">The Art of Meze</h2>
             <div class="rule-dark" aria-hidden="true"></div>
-            <p class="muted">
-              Bizim için meze, sofranın açılış serenadıdır; her notası ayrı bir
-              lezzet tınısı taşıyan ve geceyi unutulmaz kılacak o büyük
-              senfoniye hazırlayan büyülü bir başlangıç. Urla'nın bereketli
-              topraklarından toplanan taptaze otlar, Ege'nin güneşiyle demlenmiş
-              domatesler ve en saf zeytinyağının altın dokunuşuyla buluşur. O
-              zeytinyağı ki, sadece bir malzeme değil, bu toprağın ruhunu ve
-              cömertliğini taşıyan bir iksirdir. Her biri, kendi hikayesini
-              fısıldayan küçük lezzet tabaklarıdır. Bir kaşık atomun acısı,
-              damağınızda bir anlık bir şimşek çaktırırken, hemen ardından gelen
-              bir çatal Girit ezmesinin cevizli ve peynirli ferahlığı o yangını
-              tatlı bir melteme dönüştürür. Közlenmiş patlıcanın isli kokusu
-              sizi eski bir yaz akşamına götürürken, ipeksi kıvamıyla fava,
-              sadeliğin ne denli asil olabileceğinin kanıtıdır. Deniz
-              börülcesinin iyotlu tadı denizin kendisini, beyaz peynirin asil
-              duruşu ise tüm bu cümbüşün ağırbaşlı bilgesini sofraya taşır.
+            <p class="muted" data-i18n="meze_p">
+              For us, meze is the opening serenade of the meal; a magical start where each note carries a different flavor tone, preparing you for the grand symphony that will make the night unforgettable. Fresh herbs gathered from the fertile lands of Urla meet sun-drenched Aegean tomatoes with the golden touch of the purest olive oil. That olive oil is not just an ingredient, but an elixir that carries the soul and generosity of this land. Each is a small plate of flavor whispering its own story. While a spoonful of "atom" meze creates a momentary flash of heat on your palate, a forkful of Cretan paste with its nutty and cheesy freshness immediately turns that fire into a sweet breeze. The smoky scent of roasted eggplant takes you back to an old summer evening, while the silky texture of fava is proof of how noble simplicity can be. The iodized taste of sea beans brings the sea itself, and the noble stance of white cheese brings the sober wisdom of this whole feast to the table.
             </p>
           </div>
         </div>
@@ -235,28 +200,16 @@
             <img
               class="img-cover"
               src="assets/images/p52.jpg"
-              alt="Izgara balık"
+              alt="Grilled fish"
               loading="lazy"
               decoding="async"
             />
           </div>
           <div class="reveal text" data-reveal="slide-right">
-            <h2 class="serif-title">Denizden Sofraya</h2>
+            <h2 class="serif-title" data-i18n="main_course_title">From the Sea to the Table</h2>
             <div class="rule" aria-hidden="true"></div>
-            <p class="muted">
-              Hikayemiz, daha güneş Ege'nin sularını nazlıca ısıtırken limana
-              dönen balıkçı teknelerinin sesiyle başlar. O nasırlı ellerin
-              denizden çektiği, pulları gümüş gibi parıldayan her bir balık,
-              denizin o günkü cömertliğinin bir nişanıdır. Günün sonunda, işte
-              bu en değerli hazine sofraya gelir. Balıkçılarımızın ağından
-              çıkan, mevsim neyi fısıldıyorsa o olan en taze balıklar, usta
-              ellerde, adeta bir sanat eserine dönüşür. Fazla söze, karmaşık
-              soslara gerek yoktur. Sadece zeytinyağı, bir tutam tuz ve kor
-              haline gelmiş kömür ateşinin bilgeliği... Ateşin üzerinde duyulan
-              o tatlı cızırtı ve havaya yayılan o isli koku, yaklaşan lezzetin
-              en güzel habercisidir. Amaç, balığın denizden getirdiği o saf,
-              iyotlu tadı maskelemek değil, tam aksine tüm görkemiyle ortaya
-              çıkarmaktır.
+            <p class="muted" data-i18n="main_course_p">
+              Our story begins with the sound of fishing boats returning to the harbor as the sun gently warms the Aegean waters. Each fish, with its silver-shining scales pulled from the sea by those calloused hands, is a testament to the day's generosity from the sea. At the end of the day, this most precious treasure arrives at the table. The freshest fish from our fishermen's nets, whatever the season whispers, are transformed into a work of art by master hands. There is no need for many words or complex sauces. Just olive oil, a pinch of salt, and the wisdom of glowing charcoal embers... That sweet sizzle on the fire and the smoky aroma that fills the air are the best harbingers of the approaching delicacy. The aim is not to mask the pure, iodized taste the fish brings from the sea, but on the contrary, to reveal it in all its glory.
             </p>
           </div>
         </div>
@@ -271,27 +224,16 @@
             <img
               class="img-cover"
               src="assets/images/fahri baba post 3 yazısız.jpg"
-              alt="Izgara ahtapot"
+              alt="Grilled octopus"
               loading="lazy"
               decoding="async"
             />
           </div>
           <div class="reveal text" data-reveal="slide-left">
-            <h2 class="serif-title">Fahri Baba</h2>
+            <h2 class="serif-title" data-i18n="fahri_baba_title">Fahri Baba</h2>
             <div class="rule-dark" aria-hidden="true"></div>
-            <p class="muted">
-              ahri Baba, sadece bir işletme sahibi değil, o sofra kültürünün
-              yaşayan bilge çınarıdır. Beyaz önlüğüyle misafirlerinin arasında
-              dolaşırken, onun varlığı mekana sadece bir tecrübe değil, aynı
-              zamanda bir ruh katar. Burası, duvarlarına denizin tuzu,
-              teknelerin uğultusu ve nesillerin anılarının sindiği, babadan
-              oğula geçen kıymetli bir emanettir. Sofranız, Urla' nın o tatlı
-              esintisine ve iyot kokusuna karşı kurulur. Önünüze gelen her meze,
-              yılların tecrübesiyle yoğrulmuş bir reçetenin eseridir. Girit
-              ezmesi daha bir ferah, deniz börülcesi daha bir canlıdır burada.
-              Usta ellerden çıkan ahtapot ızgaranın yumuşaklığı ya da o meşhur
-              balık kokoreçin damakta bıraktığı iz, "Fahri Baba klasiği"
-              dedirten imzalardır.
+            <p class="muted" data-i18n="fahri_baba_p">
+              Fahri Baba is not just a business owner; he is the living, wise old tree of this dining culture. As he walks among his guests in his white apron, his presence adds not just experience but also a soul to the venue. This is a precious heirloom passed down from father to son, its walls imbued with the salt of the sea, the roar of the boats, and the memories of generations. Your table is set against the sweet breeze and iodine scent of Urla. Every meze that comes before you is the product of a recipe kneaded with years of experience. The Cretan paste is fresher, the sea beans more vibrant here. The tenderness of the grilled octopus from master hands or the lingering taste of the famous "balık kokoreç" are signatures that make you say, "This is a Fahri Baba classic."
             </p>
           </div>
         </div>
@@ -299,67 +241,61 @@
       <section id="scrolly-stack" class="band">
         <div class="scrolly-stage">
           <figure class="polaroid">
-            <img src="assets/images/raki.jpg" alt="Fahri Baba portresi" />
-            <figcaption>“Rakı aceleye gelmez evlat.”</figcaption>
+            <img loading="lazy" decoding="async" src="assets/images/raki.jpg" alt="Fahri Baba portrait" />
+            <figcaption data-i18n="caption1">“Raki shouldn't be rushed, my child.”</figcaption>
           </figure>
           <figure class="polaroid">
-            <img src="assets/images/p26.jpg" alt="Urla'da deniz kenarı" />
-            <figcaption>“Önce meze, sonra laf...”</figcaption>
+            <img loading="lazy" decoding="async" src="assets/images/p26.jpg" alt="Seaside in Urla" />
+            <figcaption data-i18n="caption2">“First the meze, then the talk...”</figcaption>
           </figure>
           <figure class="polaroid">
-            <img src="assets/images/bardak.jpg" alt="Balıkçı teknesi" />
-            <figcaption>“Dalgalar konuşur, biz tercüme ederiz.”</figcaption>
+            <img loading="lazy" decoding="async" src="assets/images/bardak.jpg" alt="Fishing boat" />
+            <figcaption data-i18n="caption3">“Sayfiye's Special Cocktails”</figcaption>
           </figure>
           <figure class="polaroid">
-            <img src="assets/images/p22.jpg" alt="Rakı kadehi" />
-            <figcaption>“Sadece göz göze bir tebessüm...”</figcaption>
+            <img loading="lazy" decoding="async" src="assets/images/p22.jpg" alt="Raki glass" />
+            <figcaption data-i18n="caption4">“Come hungry for conversation...”</figcaption>
           </figure>
           <figure class="polaroid">
-            <img src="assets/images/p5.jpg" alt="Bar detayı" />
-            <figcaption>“Sadece göz göze bir tebessüm...”</figcaption>
+            <img loading="lazy" decoding="async" src="assets/images/p55.jpg" alt="Bar detail" />
+            <figcaption data-i18n="caption5">“The sound of the sea is perfect...”</figcaption>
           </figure>
         </div>
       </section>
 
-      <section class="quote-full" aria-label="Söz">
+      <section class="quote-full" aria-label="Quote">
         <div class="bg" aria-hidden="true">
           <img
             src="assets/images/43.jpg"
-            alt="Urla gün batımı"
+            alt="Urla sunset"
             loading="lazy"
             decoding="async"
           />
         </div>
         <div class="content reveal" data-reveal="fade-up">
           <div class="q" data-i18n="quote2">
-            “Sayfiye’de masalar sadece yemeklerle değil, anılarla da doluyor.”
+            “At Sayfiye, tables are filled not just with food, but with memories.”
           </div>
         </div>
       </section>
 
-      <!-- DÖNEN TABAK -->
-
-      <a href="#menu"
-        ><section id="menu-ring" class="band bg-beige" aria-label="Menü keşif">
+      <a href="#menu">
+          <section id="menu-ring" class="band bg-beige" aria-label="Menu discovery">
           <div class="ring-wrap">
             <span class="decor-line decor-line--top" aria-hidden="true"></span>
 
-            <!-- Tabağın kendisi -->
             <figure class="dish" aria-hidden="true">
               <img src="assets/images/arkasi_transparan.png" alt="" />
             </figure>
 
-            <!-- Dönerek akan dairesel yazı + halka -->
             <svg class="ring" viewBox="0 0 600 600" aria-hidden="true">
               <defs>
-                <!-- Yazının döneceği yol -->
                 <path
                   id="ringPath"
                   d="M300,300 m -220,0 a 220,220 0 1,1 440,0 a 220,220 0 1,1 -440,0"
                 />
               </defs>
 
-              <!-- Dış halkalar -->
               <circle
                 cx="300"
                 cy="300"
@@ -368,7 +304,6 @@
               />
               <circle cx="300" cy="300" r="248" class="ring-border" />
 
-              <!-- Dairesel yazı -->
               <text class="ring-text">
                 <textPath href="#ringPath" startOffset="0%">
                   • MENU • MENU • MENU • MENU • MENU • MENU • MENU • MENU • MENU
@@ -385,17 +320,17 @@
         </section>
       </a>
 
-      <section id="order" class="band bg-dark" aria-label="Rezervasyon">
+      <section id="order" class="band bg-dark" aria-label="Reservation">
         <div class="wrap two-col">
           <div class="reveal text" data-reveal="slide-right">
-            <h2 class="serif-title" data-i18n="order_title">Rezervasyon</h2>
+            <h2 class="serif-title" data-i18n="order_title">Reservation</h2>
             <div class="rule" aria-hidden="true"></div>
             <p class="muted" data-i18n="order_p1">
-              Telefonla: <strong>0 (232) 000 00 00</strong><br />WhatsApp için
-              sağ alttaki “İletişim!” butonuna tıkla.
+              By phone: <strong>+90 (232) 768 41 41</strong><br />For WhatsApp,
+              click the “Contact!” button at the bottom right.
             </p>
             <p class="muted" data-i18n="order_p2">
-              Hafta içi 17:00–23:30 • Hafta sonu 16:00–01:00
+              Weekdays 17:00–23:30 • Weekends 16:00–01:00
             </p>
           </div>
           <div class="reveal" data-reveal="slide-left">
@@ -404,14 +339,14 @@
                 required
                 data-i18n-ph="ph_name"
                 name="name"
-                placeholder="Ad Soyad"
+                placeholder="Name Surname"
               />
               <input
                 required
                 data-i18n-ph="ph_phone"
                 name="phone"
                 type="tel"
-                placeholder="Telefon"
+                placeholder="Phone"
               />
               <input required data-i18n-ph="ph_date" name="date" type="date" />
               <input required data-i18n-ph="ph_time" name="time" type="time" />
@@ -423,10 +358,10 @@
                 min="1"
                 max="20"
                 value="2"
-                placeholder="Kişi sayısı"
+                placeholder="Number of people"
               />
               <button class="btn" type="submit" data-i18n="btn_send">
-                GÖNDER
+                SEND
               </button>
             </form>
           </div>
@@ -436,63 +371,61 @@
       <section
         id="sss"
         class="band bg-beige"
-        aria-label="Sıkça Sorulan Sorular"
+        aria-label="Frequently Asked Questions"
       >
         <div class="faq">
-          <h2 class="h2" data-i18n="faq_title">Sıkça Sorulan Sorular</h2>
+          <h2 class="h2" data-i18n="faq_title">Frequently Asked Questions</h2>
           <div class="rule-dark" aria-hidden="true"></div>
 
           <details>
-            <summary data-i18n="q1">Otopark var mı?</summary>
+            <summary data-i18n="q1">Is there parking available?</summary>
             <div class="answer">
               <p class="muted" data-i18n="a1">
-                -Evet, akşam saatlerinde ücretsiz otopark alanı bulunur.
-                Dolulukta vale yardımcı olur.
+                -Yes, there is a free parking area in the evenings.
+                A valet will assist if it is full.
               </p>
             </div>
           </details>
 
           <details>
             <summary data-i18n="q2">
-              Vejetaryen/vegan seçenekler mevcut mu?
+              Are vegetarian/vegan options available?
             </summary>
             <div class="answer">
               <p class="muted" data-i18n="a2">
-                -Zeytinyağlılar ve salatalar yanında günlük vegan/vejetaryen
-                alternatiflerimiz var.
+                -Besides our olive oil dishes and salads, we have daily vegan/vegetarian
+                alternatives.
               </p>
             </div>
           </details>
 
           <details>
-            <summary data-i18n="q3">Canlı müzik hangi günler?</summary>
+            <summary data-i18n="q3">On which days is there live music?</summary>
             <div class="answer">
               <p class="muted" data-i18n="a3">
-                -Cuma ve Cumartesi geceleri. Özel günlerde Instagram’dan
-                duyuruyoruz.
+                -Friday and Saturday nights. We announce special occasions on
+                Instagram.
               </p>
             </div>
           </details>
         </div>
       </section>
 
-      <footer class="mv-footer band bg-dark" id="contact" aria-label="İletişim">
+      <footer class="mv-footer band bg-dark" id="contact" aria-label="Contact">
         <div class="mv-grid wrap">
-          <!-- 1) LOGO -->
           <div class="mv-col mv-brand">
             <div class="mv-logo">
               <a href="#home" aria-label="Sayfiye Evi">
-                <img src="assets/images/logo.png" alt="Sayfiye Evi" />
+                <img style="margin-left:25px!important;" src="assets/images/logo.png" alt="Sayfiye Evi" />
               </a>
             </div>
           </div>
 
-          <!-- 2) CONTACT + SOSYAL -->
           <div class="mv-col mv-contact">
-            <h3 class="mv-title" style="text-align: center">CONTACT</h3>
+            <h3 class="mv-title" style="text-align: center" data-i18n="contact_title">CONTACT</h3>
             <ul class="mv-contact-list">
               <li>
-                <span>Telefon</span>
+                <span data-i18n="contact_phone">Phone</span>
                 <a href="tel:+902327684141">+90 (232) 768 41 41</a>
               </li>
               <li>
@@ -514,7 +447,7 @@
                 >
               </li>
               <li>
-                <span>E-posta</span>
+                <span data-i18n="contact_email">E-mail</span>
                 <a href="mailto:info@sayfiyeevi.com">info@sayfiyeevi.com</a>
               </li>
             </ul>
@@ -536,13 +469,12 @@
                 aria-label="WhatsApp"
                 ><i class="mdi mdi-whatsapp"></i
               ></a>
-              <a class="mv-ico" href="tel:+9002327684141" aria-label="Telefon"
+              <a class="mv-ico" href="tel:+9002327684141" aria-label="Phone"
                 ><i class="mdi mdi-phone"></i
               ></a>
             </div>
           </div>
 
-          <!-- 3) MAP + ADRES -->
           <div class="mv-col mv-map-wrap">
             <div class="mv-map">
               <iframe
@@ -555,7 +487,7 @@
                 referrerpolicy="no-referrer-when-downgrade"
               ></iframe>
             </div>
-            <address class="mv-addr muted">Urla Sayfiye Evi Restoran
+            <address class="mv-addr muted">Urla Sayfiye Evi Restaurant
 Torasan, 502. Sk. No: 27, 35430 Urla/İzmir</address>
           </div>
         </div>
@@ -573,6 +505,7 @@ Torasan, 502. Sk. No: 27, 35430 Urla/İzmir</address>
           </div>
         </div>
       </footer>
+
     </main>
     <script src="assets/js/main.js" defer></script>
   </body>

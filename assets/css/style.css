@@ -178,6 +178,8 @@
     .btn::after{ content:""; position:absolute; top:0; left:-150%; width:120%; height:100%; transform:skewX(-18deg); background: linear-gradient(90deg, transparent, rgba(255,255,255,.18), transparent); }
     .btn:hover::after{ animation: shimmer 1.2s ease; }
     @keyframes shimmer { to { left: 150%; } }
+    
+.muted{font-size:22px;line-height:1.8;color:var(--muted)}
 
     .rule{width:80px;height:2px;background:var(--rule);margin:var(--s-2) 0 var(--s-3)}
     .rule-dark{width:80px;height:2px;background:var(--text-dark);margin:var(--s-2) 0 var(--s-3)}
@@ -262,7 +264,7 @@
       color: var(--text);
       border-radius:10px;
       font-family: var(--font-body);
-      font-size: 16px;
+      font-size: 20px;
       transition: border-color .2s, box-shadow .2s;
     }
     form input:focus {
@@ -276,7 +278,7 @@
        POLAROID SCROLL STACK
        ========================= */
     #scrolly-stack {
-      --card-width: min(72vw, 480px);
+      --card-width: min(72vw, 600px);
       --card-height: 58vh;
       position: relative;
       color: #333;
@@ -310,11 +312,11 @@
     }
     .polaroid figcaption {
       position: absolute;
-      bottom: 20px;
+      bottom: 15px;
       left: 20px;
       right: 20px;
       font-family: var(--font-display);
-      font-size: 28px;
+      font-size: 35px;
       color: #333;
       text-align: center;
       opacity: 0;
@@ -337,9 +339,22 @@
     @media (max-width:768px){
       .wrap{ padding: var(--s-6) var(--s-3); }
       .band.bg-dark .wrap{ padding: var(--s-6) var(--s-3); }
-      .serif-title{ font-size: clamp(24px, 7vw, 34px); }
-      .muted{ font-size: 16px; line-height: 1.7; }
+      .serif-title{ font-size: clamp(2px, 7vw, 34px); }
+      .muted{ font-size: 20px; line-height: 1.7; }
       .map-frame{ height:300px }
+      .polaroid figcaption {
+      position: absolute;
+      bottom: 1px;
+      left: 20px;
+      right: 20px;
+      font-family: var(--font-display);
+      font-size: 25px;
+      color: #333;
+      text-align: center;
+      opacity: 0;
+      transform: translateY(12px);
+      transition: opacity .6s var(--ease), transform .6s var(--ease);
+    }
     }
 
     /* A11Y / Motion */
@@ -416,27 +431,41 @@
   .decor-line{ height: 6cm; }
 }
 
-/* --- scrolly-stack arka plan resmi (yalnızca 7.png) --- */
-#scrolly-stack { position: relative; }
-
-#scrolly-stack .scrolly-stage{
-  position: sticky; top: 0;      /* zaten vardı */
-  /* Aşağıdaki 3 satır tüm işi yapıyor */
-  background-image: url("/assets/images/indir5.png");   /* Yol: projendeki diğer görsellerle aynı klasör */
-  background-repeat: no-repeat;
-  background-position: center;
-  /* Boyut/yoğunluk ayarları */
-  background-size: min(4500px, 4500px);  /* daha büyük istersen 80vmin yap */
-  opacity: 0.9;                         /* çok soluksa .5 – .6 yap */
-  mix-blend-mode: multiply;             /* çizgileri koyulaştırır; istemezsen kaldır */
-
+/* Bölümün arkası yine bej olsun (emin olalım) */
+#scrolly-stack{
+  background: var(--beige);
 }
 
-/* Polaroidler her zaman üstte kalsın */
-#scrolly-stack .polaroid{ position:absolute; z-index: 2; }
+/* Köşeleri yuvarlatılmış görsel – ARKA PLAN TONUNU BOZMADAN */
+#scrolly-stack .scrolly-stage{
+  position: sticky;
+  top: 0;
+  background: transparent;
+}
 
+/* Buradaki kritik yer: background-blend-mode:multiply + background-color:var(--beige) */
+#scrolly-stack .scrolly-stage::before{
+  content:"";
+  position:absolute;
+  inset:0;
+  margin:auto;
 
+  width: min(1400px, 88vw);
+  aspect-ratio: 16 / 9;
 
+  /* Alt katmana bej rengi veriyoruz, üstüne görseli koyup ikisini kendi içinde çarpıyoruz */
+  background-color: var(--beige);
+  background-image: url("/assets/images/indir5.png");
+  background-position: center;
+  background-size: min(1900px, 1400px);
+  background-repeat: no-repeat;
+  background-blend-mode: multiply;  /* beyaz alanlar beje döner */
+  mix-blend-mode: normal;           /* sayfa arkasını etkilemez */
+
+  border-radius: 28px;
+  overflow: hidden;
+  opacity: 1;                       /* soluklaşmasın */
+}
 
 
 
@@ -529,7 +558,7 @@
 }
 
 
-/* ===== Monteverdi tarzı koyu footer (çakışmasın diye mv-* isimleri) ===== */
+/* =====koyu footer (çakışmasın diye mv-* isimleri) ===== */
 .mv-footer{ 
   background: var(--bg-dark, #0f1518);
   color: var(--text, #e0d8cc);
@@ -711,4 +740,43 @@
 #meze .text .cta-res{ margin-top:22px; }
 
 @keyframes shimmer{ to{ left:140%; } }
+
+/* mobilde tam ekran */
+@supports (height: 100svh){
+  #scrolly-stack .scrolly-stage{ height: 100svh; }
+}
+
+@media (max-width:680px){
+  #scrolly-stack{ background: var(--beige); overflow:hidden; }
+  #scrolly-stack .scrolly-stage{ overflow:hidden; }
+
+  /* görsel kutusunu tüm ekranı kaplayacak şekilde çiz */
+  #scrolly-stack .scrolly-stage::before{
+    inset: 0 !important;
+    left:auto; top:auto; transform:none;
+    width: 100% !important;
+    height: 100% !important;
+    aspect-ratio: auto !important;
+
+    /* tam ekran – köşesiz; istersen 12px yapabilirsin */
+    border-radius: 0;
+    box-shadow: none;
+
+    background-color: var(--beige);
+    background-image: url("/assets/images/indir5.png");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;        /* tam ekran doldurur */
+    background-blend-mode: multiply;
+    mix-blend-mode: normal;
+    z-index: 1;
+  }
+
+  /* polaroidler üstte kalsın */
+  #scrolly-stack .polaroid{ z-index: 2; }
+}
+
+
+/* hero svh support */
+@supports(height:100svh){ .hero{ height: 100svh; } }
 
