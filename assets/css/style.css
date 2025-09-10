@@ -426,7 +426,7 @@
   background-repeat: no-repeat;
   background-position: center;
   /* Boyut/yoğunluk ayarları */
-  background-size: min(2500px, 2500px);  /* daha büyük istersen 80vmin yap */
+  background-size: min(4500px, 4500px);  /* daha büyük istersen 80vmin yap */
   opacity: 0.9;                         /* çok soluksa .5 – .6 yap */
   mix-blend-mode: multiply;             /* çizgileri koyulaştırır; istemezsen kaldır */
 
