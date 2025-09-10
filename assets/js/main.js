@@ -163,7 +163,7 @@
         reservation_p: "O eşsiz meze sofrasının ilk notası, keyifli bir sohbetin ilk adımı, sizin için özenle hazırladığımız o özel masayla atılır. Bizim için her misafir, en değerli konuğumuzdur ve paylaştığınız her anın kıymetini derinden biliriz. Bu değerli anların ve gecenin büyüsünün, kapıda beklemenin belirsizliğiyle gölgelenmesine izin vermemek adına, soframızdaki yerinizi önceden ayırtmanızı rica ediyoruz. Rezervasyon, sadece boş bir masa bulma garantisi değil, aynı zamanda o akşamın size adandığının, mutfağımızdan servisimize tüm ekibimizin sizin için hazırlandığının bir güvencesidir.",
         reservation_button: "Rezervasyon Yap",
         meze_title: "Meze Sanatı",
-        meze_p: "Bizim için meze, sofranın açılış serenadıdır; her notası ayrı bir lezzet tınısı taşıyan ve geceyi unutulmaz kılacak o büyük senfoniye hazırlayan büyülü bir başlangıç. Urla'nın bereketli topraklarından toplanan taptaze otlar, Ege'nin güneşiyle demlenmiş domatesler ve en saf zeytinyağının altın dokunuşuyla buluşur. O zeytinyağı ki, sadece bir malzeme değil, bu toprağın ruhunu ve cömertliğini taşıyan bir iksirdir. Her biri, kendi hikayesini fısıldayan küçük lezzet tabaklarıdır. Bir kaşık atomun acısı, damağınızda bir anlık bir şimşek çaktırırken, hemen ardından gelen bir çatal Girit ezmesinin cevizli ve peynirli ferahlığı o yangını tatlı bir melteme dönüştürür. Közlenmiş patlıcanın isli kokusu sizi eski bir yaz akşamına götürürken, ipeksi kıvamıyla fava, sadeliğin ne denli asil olabileceğinin kanıtıdır. Deniz börülcesinin iyotlu tadı denizin kendisini, beyaz peynirin asil duruşu ise tüm bu cümbüşün ağırbaşlı bilgesini sofraya taşır.",
+        meze_p: "Bizim için meze, sofranın açılış serenadıdır; her notası ayrı bir lezzet tınısı taşıyan ve geceyi unutulmaz kılacak o büyük senfoniye hazırlayan büyülü bir başlangıç. Urla'nın bereketli topraklarından toplanan taptaze otlar, Ege'nin güneşiyle demlenmiş domatesler ve en saf zeytinyağının altın dokunuşuyla buluşur. O zeytinyağı ki, sadece bir malzeme değil, bu toprağın ruhunu ve cömertliğini taşıyan bir iksirdir. Her biri, kendi hikâyesini fısıldayan küçük lezzet tabaklarıdır. Bir kaşık atomun acısı, damağınızda bir anlık bir şimşek çaktırırken, hemen ardından gelen bir çatal Girit ezmesinin cevizli ve peynirli ferahlığı o yangını tatlı bir melteme dönüştürür. Közlenmiş patlıcanın isli kokusu sizi eski bir yaz akşamına götürürken, ipeksi kıvamıyla fava, sadeliğin ne denli asil olabileceğinin kanıtıdır. Deniz börülcesinin iyotlu tadı denizin kendisini, beyaz peynirin asil duruşu ise tüm bu cümbüşün ağırbaşlı bilgesini sofraya taşır.",
         main_course_title: "Denizden Sofraya",
         main_course_p: "Hikayemiz, daha güneş Ege'nin sularını nazlıca ısıtırken limana dönen balıkçı teknelerinin sesiyle başlar. O nasırlı ellerin denizden çektiği, pulları gümüş gibi parıldayan her bir balık, denizin o günkü cömertliğinin bir nişanıdır. Günün sonunda, işte bu en değerli hazine sofraya gelir. Balıkçılarımızın ağından çıkan, mevsim neyi fısıldıyorsa o olan en taze balıklar, usta ellerde, adeta bir sanat eserine dönüşür. Fazla söze, karmaşık soslara gerek yoktur. Sadece zeytinyağı, bir tutam tuz ve kor haline gelmiş kömür ateşinin bilgeliği... Ateşin üzerinde duyulan o tatlı cızırtı ve havaya yayılan o isli koku, yaklaşan lezzetin en güzel habercisidir. Amaç, balığın denizden getirdiği o saf, iyotlu tadı maskelemek değil, tam aksine tüm görkemiyle ortaya çıkarmaktır.",
         fahri_baba_title: "Fahri Baba",
@@ -229,16 +229,25 @@
 
   // ===== Motion Bits =====
   if (!prefersReducedMotion) {
-    const heroMedia = document.querySelector('.hero .bg-media');
-    const parallax = () => {
-      if (!heroMedia) return;
-      const y = window.scrollY || 0;
-      const blurAmount = Math.min(y * 0.01, 5);
-      heroMedia.style.transform = `translateY(${y * 0.15}px) scale(1.06)`;
-      heroMedia.style.filter = `brightness(.8) contrast(1.05) blur(${blurAmount}px)`;
+    
+    // YENİ: Otomatik Hero Slider Fonksiyonu
+    const heroSlider = () => {
+        const slider = document.querySelector('.bg-slider');
+        if (!slider) return;
+        
+        const slides = slider.querySelectorAll('.slide');
+        if (slides.length < 2) return;
+        
+        let currentIndex = 0;
+        
+        setInterval(() => {
+            slides[currentIndex].classList.remove('is-active');
+            currentIndex = (currentIndex + 1) % slides.length;
+            slides[currentIndex].classList.add('is-active');
+        }, 5000); // 5 saniyede bir değişir
     };
-    window.addEventListener('scroll', parallax, { passive: true });
-    parallax();
+    heroSlider();
+
 
     document.querySelectorAll('.menu-card').forEach(card=>{
       const r = 12; let raf;

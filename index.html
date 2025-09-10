@@ -47,7 +47,7 @@
           <div class="menu" id="menuPanel">
             <div class="links" id="links">
               <a href="#home" data-i18n="nav_home">HOME</a>
-              <a href="#menu-ring" data-i18n="nav_menu">MENU</a>
+              <a href="/assets/pdfs/menu.pdf" target="_blank" rel="noopener" data-i18n="nav_menu">MENU</a>
               <a href="#scrolly-stack" data-i18n="nav_fahri">FAHRI BABA</a>
               <a href="#order" data-i18n="nav_order">RESERVATION</a>
               <a href="#contact" data-i18n="nav_contact">CONTACT</a>
@@ -89,17 +89,12 @@
       <div class="scroll-progress" id="scrollProgress" aria-hidden="true"></div>
 
       <header id="home" class="hero" role="banner">
-        <video
-          class="bg-media"
-          src="assets/videos/ortam.mp4"
-          autoplay
-          muted
-          loop
-          playsinline
-          preload="metadata"
-          poster="assets/images/manzara.png"
-          aria-hidden="true"
-        ></video>
+        <div class="bg-slider" aria-hidden="true">
+            <div class="slide is-active" style="background-image: url('assets/images/drongunduz1.jpg');"></div>
+            <div class="slide" style="background-image: url('assets/images/dronkara.jpg');"></div>
+                        <div class="slide" style="background-image: url('assets/images/43.jpg');"></div>
+
+        </div>
         <div class="hero-inner">
           <h1 class="display" data-i18n="hero_title">Sayfiye Evi</h1>
         </div>
@@ -279,7 +274,7 @@
         </div>
       </section>
 
-      <a href="#menu">
+      <a href="/assets/pdfs/menu.pdf" target="_blank" rel="noopener">
           <section id="menu-ring" class="band bg-beige" aria-label="Menu discovery">
           <div class="ring-wrap">
             <span class="decor-line decor-line--top" aria-hidden="true"></span>
@@ -307,7 +302,7 @@
               <text class="ring-text">
                 <textPath href="#ringPath" startOffset="0%">
                   • MENU • MENU • MENU • MENU • MENU • MENU • MENU • MENU • MENU
-                  • MENU • MENU • MENU •
+                  • MENU • MENU • 
                 </textPath>
               </text>
             </svg>

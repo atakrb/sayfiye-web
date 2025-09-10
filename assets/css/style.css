@@ -1,6 +1,6 @@
-    /* =========================
-       TEMA DEĞİŞKENLERİ (MAVİ PALET)
-       ========================= */
+/* =========================
+        TEMA DEĞİŞKENLERİ (MAVİ PALET)
+        ========================= */
     :root{
       --bg-dark: #0a1014;
       --bg-dark-accent: #101820;
@@ -152,11 +152,6 @@
 
     /* = HERO (VİDEO DESTEKLİ) = */
     .hero{position:relative;height:100vh;min-height:640px;overflow:hidden}
-    .hero .bg-media{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;
-      filter:brightness(.8) contrast(1.05); transform:scale(1.06); will-change: transform, filter;
-      transition: filter .4s linear;
-    }
-    .hero::after{content:"";position:absolute;inset:0;background:var(--overlay)}
     .hero-inner{position:relative;z-index:2;height:100%;display:grid;place-items:center;text-align:center;padding:0 var(--s-2)}
     .hero .display{font-size:var(--fs-h1);color:var(--text);text-shadow:0 5px 25px rgba(0,0,0,.5);opacity:0;animation:fadeInUp var(--dur) var(--ease) .8s forwards}
     .scroll-indicator{position:absolute;bottom:30px;left:50%;transform:translateX(-50%);z-index:10;animation:bounce 2s infinite}
@@ -275,8 +270,8 @@
     form input[type="date"], form input[type="time"] { color-scheme: dark; }
 
     /* =========================
-       POLAROID SCROLL STACK
-       ========================= */
+        POLAROID SCROLL STACK
+        ========================= */
     #scrolly-stack {
       --card-width: min(72vw, 600px);
       --card-height: 58vh;
@@ -325,8 +320,8 @@
     }
 
     /* =========================
-       RESPONSIVE
-       ========================= */
+        RESPONSIVE
+        ========================= */
 
     /* 1) Dark ve tüm two-col bölümler 1100px altında tek kolona düşsün (üst üste binmeyi engeller) */
     @media (max-width:1100px){
@@ -402,11 +397,11 @@
   transform-origin: 50% 50%; transform-box: fill-box;
   animation: spinRing 24s linear infinite;
 }
-.ring-border{ fill: none; stroke: var(--ringColor); stroke-width: 14; }
+.ring-border{ fill: none; stroke: var(--ringColor); stroke-width: 0; }
 .ring-border--thin{ stroke-width: 2; opacity: .9; }
 
 .ring-text{
-  font: 600 22px var(--font-head);
+  font: 600 26px var(--font-head);
   letter-spacing: .35em; text-transform: uppercase;
   fill: var(--ringColor);
 }
@@ -459,12 +454,12 @@
   background-position: center;
   background-size: min(1900px, 1400px);
   background-repeat: no-repeat;
-  background-blend-mode: multiply;  /* beyaz alanlar beje döner */
-  mix-blend-mode: normal;           /* sayfa arkasını etkilemez */
+  background-blend-mode: multiply;   /* beyaz alanlar beje döner */
+  mix-blend-mode: normal;         /* sayfa arkasını etkilemez */
 
   border-radius: 28px;
   overflow: hidden;
-  opacity: 1;                       /* soluklaşmasın */
+  opacity: 1;                     /* soluklaşmasın */
 }
 
 
@@ -477,12 +472,15 @@
 /* ====== Varsayılan (desktop) değerler — tek yerden kontrol ====== */
 #menu-ring{
   /* Konumlar */
-  --p1: left 4%  top 8%;
-  --p2: right 4% top 8%;
-  --p3: left 25% top 30%;
+  --p1: left 4%   top 8%;
+  --p2: right 4%  top 8%;
+  --p3: left 25%  top 30%;
   --p4: right 28% top 26%;
-  --p5: left 26% bottom 3%;
+  --p5: left 26%  bottom 3%;
   --p6: right 24% bottom 16%;
+  --p7: left 45%  top 5%;
+  --p8: right 10% bottom 45%;
+  --p9: left 10%  bottom 30%;
   /* Boyutlar */
   --s1: clamp(260px, 21vmin, 420px);
   --s2: clamp(260px, 21vmin, 420px);
@@ -490,6 +488,9 @@
   --s4: clamp(220px, 18vmin, 360px);
   --s5: clamp(240px, 19vmin, 380px);
   --s6: clamp(240px, 19vmin, 380px);
+  --s7: clamp(200px, 17vmin, 340px);
+  --s8: clamp(200px, 17vmin, 340px);
+  --s9: clamp(200px, 17vmin, 340px);
 }
 
 #menu-ring .ring-wrap::before{
@@ -509,24 +510,30 @@
     url("/assets/images/3.png"),
     url("/assets/images/4.png"),
     url("/assets/images/5.png"),
-    url("/assets/images/6.png");
-  background-repeat: no-repeat, no-repeat, no-repeat, no-repeat, no-repeat, no-repeat;
+    url("/assets/images/6.png"),
+    url("/assets/images/4.png"),
+    url("/assets/images/2.png"),
+    url("/assets/images/3.png");
+  background-repeat: no-repeat, no-repeat, no-repeat, no-repeat, no-repeat, no-repeat, no-repeat, no-repeat, no-repeat;
 
   /* değişkenlerden oku */
-  background-position: var(--p1), var(--p2), var(--p3), var(--p4), var(--p5), var(--p6);
-  background-size:     var(--s1), var(--s2), var(--s3), var(--s4), var(--s5), var(--s6);
+  background-position: var(--p1), var(--p2), var(--p3), var(--p4), var(--p5), var(--p6), var(--p7), var(--p8), var(--p9);
+  background-size:     var(--s1), var(--s2), var(--s3), var(--s4), var(--s5), var(--s6), var(--s7), var(--s8), var(--s9);
 }
 
 
 /* ====== Tablet (≤ 1024px): ikonları kenarlara çek, biraz küçült ====== */
 @media (max-width:1024px){
   #menu-ring{
-    --p1: left 2%  top 6%;
-    --p2: right 2% top 8%;
-    --p3: left 6%  top 34%;
-    --p4: right 6% top 36%;
-    --p5: left 6%  bottom 8%;
-    --p6: right 6% bottom 10%;
+    --p1: left 2%   top 6%;
+    --p2: right 2%  top 8%;
+    --p3: left 6%   top 34%;
+    --p4: right 6%  top 36%;
+    --p5: left 6%   bottom 8%;
+    --p6: right 6%  bottom 10%;
+    --p7: left 45%  top 2%;
+    --p8: right 10% bottom 48%;
+    --p9: left 10%  bottom 28%;
 
     --s1: clamp(200px, 22vw, 320px);
     --s2: clamp(200px, 22vw, 320px);
@@ -534,6 +541,9 @@
     --s4: clamp(180px, 20vw, 280px);
     --s5: clamp(190px, 21vw, 300px);
     --s6: clamp(190px, 21vw, 300px);
+    --s7: clamp(180px, 19vw, 280px);
+    --s8: clamp(180px, 19vw, 280px);
+    --s9: clamp(180px, 19vw, 280px);
   }
 }
 
@@ -541,19 +551,22 @@
 @media (max-width:680px){
   #menu-ring{
     /* sadece 1,2,5,6 kalsın */
-    --p1: left 3%  top 8%;
-    --p2: right 3% top 8%;
-    --p5: left 3%  bottom 8%;
-    --p6: right 3% bottom 8%;
+    --p1: left 3%   top 8%;
+    --p2: right 3%  top 8%;
+    --p5: left 3%   bottom 8%;
+    --p6: right 3%  bottom 8%;
 
     --s1: clamp(140px, 30vw, 220px);
     --s2: clamp(140px, 30vw, 220px);
     --s5: clamp(140px, 30vw, 220px);
     --s6: clamp(140px, 30vw, 220px);
 
-    /* 3 ve 4'ü görünmez yap */
+    /* 3, 4, ve yenileri görünmez yap */
     --s3: 0px;
     --s4: 0px;
+    --s7: 0px;
+    --s8: 0px;
+    --s9: 0px;
   }
 }
 
@@ -626,7 +639,7 @@
 /* Yazılar bej dursun (footer içinde tonları sabitle) */
 .mv-footer{
   --text: #e8dfd1;          /* bej yazı */
-  --muted: #bfb5a7;         /* bej-ince */
+  --muted: #bfb5a7;          /* bej-ince */
 }
 
 /* Footer logo – PNG'yi beje boya + responsive boyut */
@@ -642,7 +655,7 @@
   opacity: .95;
 
   /* Hafif parlaklık, istersen kaldır */
-  mix-blend-mode: screen;          /* koyu zeminde daha net görünür */
+  mix-blend-mode: screen;         /* koyu zeminde daha net görünür */
 }
 
 
@@ -766,7 +779,7 @@
     background-image: url("/assets/images/indir5.png");
     background-repeat: no-repeat;
     background-position: center;
-    background-size: cover;        /* tam ekran doldurur */
+    background-size: cover;       /* tam ekran doldurur */
     background-blend-mode: multiply;
     mix-blend-mode: normal;
     z-index: 1;
@@ -780,3 +793,31 @@
 /* hero svh support */
 @supports(height:100svh){ .hero{ height: 100svh; } }
 
+/* === Hero slider === */
+.hero { position: relative; min-height: 100vh; min-height: 100dvh; overflow: hidden; }
+
+.bg-slider { position: absolute; inset: 0; z-index: 0; }
+.bg-slider .slide{
+  position: absolute; inset: 0;
+  background-image: var(--bg);
+  background-size: cover; background-position: center center; background-repeat: no-repeat;
+  opacity: 0; transition: opacity .9s ease;
+  will-change: opacity;
+}
+.bg-slider .slide.is-active{ opacity: 1; }
+
+/* Overlay tonunu koru (tema değişkenin varsa) */
+.bg-slider::after{
+  content: ""; position: absolute; inset: 0;
+  background: var(--overlay, rgba(10,16,20,.45));
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* Üst yazılar görünsün */
+.hero .hero-inner, .hero .scroll-indicator{ position: relative; z-index: 2; }
+
+/* Motion hassasiyet */
+@media (prefers-reduced-motion: reduce){
+  .bg-slider .slide{ transition: none; }
+}
