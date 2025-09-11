@@ -150,8 +150,8 @@
     },
     tr: {
         preloader_text: "Rakı kıvamını buluyor...",
-        nav_home: "HOME",
-        nav_menu: "MENU",
+        nav_home: "ANA SAYFA",
+        nav_menu: "MENÜ",
         nav_fahri: "FAHRI BABA",
         nav_order: "REZERVASYON",
         nav_contact: "ILETISIM",
@@ -167,7 +167,7 @@
         main_course_title: "Denizden Sofraya",
         main_course_p: "Hikayemiz, daha güneş Ege'nin sularını nazlıca ısıtırken limana dönen balıkçı teknelerinin sesiyle başlar. O nasırlı ellerin denizden çektiği, pulları gümüş gibi parıldayan her bir balık, denizin o günkü cömertliğinin bir nişanıdır. Günün sonunda, işte bu en değerli hazine sofraya gelir. Balıkçılarımızın ağından çıkan, mevsim neyi fısıldıyorsa o olan en taze balıklar, usta ellerde, adeta bir sanat eserine dönüşür. Fazla söze, karmaşık soslara gerek yoktur. Sadece zeytinyağı, bir tutam tuz ve kor haline gelmiş kömür ateşinin bilgeliği... Ateşin üzerinde duyulan o tatlı cızırtı ve havaya yayılan o isli koku, yaklaşan lezzetin en güzel habercisidir. Amaç, balığın denizden getirdiği o saf, iyotlu tadı maskelemek değil, tam aksine tüm görkemiyle ortaya çıkarmaktır.",
         fahri_baba_title: "Fahri Baba",
-        fahri_baba_p: "Fahri Baba, sadece bir işletme sahibi değil, o sofra kültürünün yaşayan bilge çınarıdır. Beyaz önlüğüyle misafirlerinin arasında dolaşırken, onun varlığı mekana sadece bir tecrübe değil, aynı zamanda bir ruh katar. Burası, duvarlarına denizin tuzu, teknelerin uğultusu ve nesillerin anılarının sindiği, babadan oğula geçen kıymetli bir emanettir. Sofranız, Urla' nın o tatlı esintisine ve iyot kokusuna karşı kurulur. Önünüze gelen her meze, yılların tecrübesiyle yoğrulmuş bir reçetenin eseridir. Girit ezmesi daha bir ferah, deniz börülcesi daha bir canlıdır burada. Usta ellerden çıkan ahtapot ızgaranın yumuşaklığı ya da o meşhur balık kokoreçin damakta bıraktığı iz, \"Fahri Baba klasiği\" dedirten imzalardır.",
+        fahri_baba_p: "Fahri Baba, sadece bir işletme sahibi değil, o sofra kültürünün yaşayan bilge çınarıdır. Beyaz önlüğüyle misafirlerinin arasında dolaşırken, onun varlığı mekana sadece bir tecrbe değil, aynı zamanda bir ruh katar. Burası, duvarlarına denizin tuzu, teknelerin uğultusu ve nesillerin anılarının sindiği, babadan oğula geçen kıymetli bir emanettir. Sofranız, Urla' nın o tatlı esintisine ve iyot kokusuna karşı kurulur. Önünüze gelen her meze, yılların tecrübesiyle yoğrulmuş bir reçetenin eseridir. Girit ezmesi daha bir ferah, deniz börülcesi daha bir canlıdır burada. Usta ellerden çıkan ahtapot ızgaranın yumuşaklığı ya da o meşhur balık kokoreçin damakta bıraktığı iz, \"Fahri Baba klasiği\" dedirten imzalardır.",
         caption1: "“Rakı aceleye gelmez evlat.”",
         caption2: "“Önce meze, sonra laf...”",
         caption3: "“Sayfiye's Special Coctails”",
@@ -335,12 +335,9 @@
         if (!wrap || plates.length === 0) return;
 
         // --- DYNAMICALLY SET STYLES FOR PINNING ---
-        // 1. Set the height of the parent section to create scroll space.
-        //    100vh per plate seems like a good pace.
         section.style.height = `${plates.length * 100}vh`;
-        section.style.padding = '0'; // Remove padding that could interfere.
+        section.style.padding = '0'; 
 
-        // 2. Make the inner wrapper sticky.
         wrap.style.height = '100vh';
         wrap.style.position = 'sticky';
         wrap.style.top = '0';
@@ -348,27 +345,23 @@
 
         const onScroll = () => {
             const rect = section.getBoundingClientRect();
-            // Optimization: Don't run calculations if the section isn't visible.
             if (rect.bottom < 0 || rect.top > window.innerHeight) return;
             
             const scrollInParent = -rect.top;
             const sectionHeight = rect.height;
             const viewHeight = window.innerHeight;
             
-            // Calculate progress (from 0 to 1) as the section scrolls through the viewport.
             const progress = Math.max(0, Math.min(1, scrollInParent / (sectionHeight - viewHeight)));
             
-            // Determine which plate should be active based on the scroll progress.
             const activeIndex = Math.min(plates.length - 1, Math.floor(progress * plates.length));
 
-            // Update the .is-active class on the correct plate.
             plates.forEach((plate, i) => {
                 plate.classList.toggle('is-active', i === activeIndex);
             });
         };
         
         window.addEventListener('scroll', onScroll, { passive: true });
-        onScroll(); // Run once on load to set the initial state.
+        onScroll(); 
     };
     scrollyMenuModule();
 
@@ -390,41 +383,5 @@
       });
     };
     videoify();
-
-    // Autoplay videoları görünürlükte yönet
-    const autoVideos = document.querySelectorAll('video[data-autoplay]');
-    if ('IntersectionObserver' in window && autoVideos.length) {
-      const vio = new IntersectionObserver(entries => {
-        entries.forEach(async ({ target, isIntersecting }) => {
-          const v = target;
-          try {
-            if (isIntersecting) {
-              if (v.paused) { v.currentTime = 0; await v.play().catch(()=>{}); }
-              v.closest('.menu-card')?.classList.add('in-view');
-            } else {
-              v.pause();
-              v.closest('.menu-card')?.classList.remove('in-view');
-            }
-          } catch (e) {}
-        });
-      }, { threshold: 0.35 });
-      autoVideos.forEach(v => vio.observe(v));
-    }
-
-    document.addEventListener('visibilitychange', () => {
-      const vids = document.querySelectorAll('video');
-      vids.forEach(v => {
-        if (document.hidden) v.pause();
-        else if (v.hasAttribute('data-autoplay') || v.classList.contains('bg-media')) { v.play().catch(()=>{}); }
-      });
-    });
   }
-
-  // Newsletter mini-form
-  document.getElementById('newsletterForm')?.addEventListener('submit', (e) => {
-    e.preventDefault();
-    alert('Your newsletter subscription has been received. Thank you!');
-    e.target.reset();
-  });
-
 })(); // IIFE END
